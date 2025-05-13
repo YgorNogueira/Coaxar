@@ -9,6 +9,17 @@ namespace CoaxarApp.ViewModels
 {
     public class CoaxarViewModel
     {
-        public ObservableCollection<AnimalModel> Animals { get; set; } = new ObservableCollection<AnimalModel>();
+        // Lista completa de espécies
+        public ObservableCollection<AnimalModel> Species { get; set; } = new ObservableCollection<AnimalModel>();
+
+        // Lista filtrada de espécies
+        public ObservableCollection<AnimalModel> FilteredSpecies { get; set; } = new ObservableCollection<AnimalModel>();
+
+        // Construtor da classe
+        public CoaxarViewModel()
+        {
+            Species = new ObservableCollection<AnimalModel>();
+            FilteredSpecies = new ObservableCollection<AnimalModel>();
+        }
     }
 }
