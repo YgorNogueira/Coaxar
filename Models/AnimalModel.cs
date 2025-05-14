@@ -8,6 +8,9 @@ namespace CoaxarApp
 {
     public class AnimalModel
     {
+        //Família do animal
+        public required string Family { get; set; }
+
         //Nome do animal
         public required string Name { get; set; }
 
