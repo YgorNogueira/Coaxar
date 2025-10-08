@@ -3,18 +3,27 @@
     x:Class="CoaxarApp.HomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    BackgroundColor="#613909"
     Loaded="HomeLoaded">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#CFF7CF" Offset="0.0" />
+            <!-- Verde bem claro no topo -->
+            <GradientStop Color="#FFFFFF" Offset="1.0" />
+            <!-- Branco na parte inferior -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
 
 
     <Image
         x:Name="HomeImage"
         Aspect="AspectFit"
-        HeightRequest="128"
+        HeightRequest="150"
         HorizontalOptions="Center"
         Opacity="0"
         Source="coaxarlogo.png"
         VerticalOptions="Center"
-        WidthRequest="128" />
+        WidthRequest="150" />
+
 
 </ContentPage>
