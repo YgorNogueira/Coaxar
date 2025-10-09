@@ -1,25 +1,18 @@
-﻿namespace CoaxarApp
+﻿using CoaxarApp.ViewModels;
+
+namespace CoaxarApp
 {
     public partial class MainPage : ContentPage
     {
+        public CoaxarViewModel ViewModel = new CoaxarViewModel();
         int count = 0;
 
         public MainPage()
         {
+            this.BindingContext = ViewModel;
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
     }
 
 }

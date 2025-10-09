@@ -42,6 +42,7 @@ public partial class HomePage : ContentPage
         {
             Text = "Carregando...",
             FontSize = 14,
+            FontFamily = "POPS",
             TextColor = Color.FromArgb("#14532D"),
             HorizontalTextAlignment = TextAlignment.Center
         };

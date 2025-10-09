@@ -7,9 +7,9 @@
 
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Color="#CFF7CF" Offset="0.0" />
+            <GradientStop Color="#CFF7CF" Offset="1.0" />
             <!-- Verde bem claro no topo -->
-            <GradientStop Color="#FFFFFF" Offset="1.0" />
+            <GradientStop Color="#FFFFFF" Offset="0.0" />
             <!-- Branco na parte inferior -->
         </LinearGradientBrush>
     </ContentPage.Background>
