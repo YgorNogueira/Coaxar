@@ -20,8 +20,14 @@ public static class MauiProgram
 				fonts.AddFont("Poppins-SemiBold.ttf", "POPS");
 			});
 
+		builder.Services.AddTransient<MainPage>();
+		builder.Services.AddTransient<ListPage>();
+		builder.Services.AddTransient<HomePage>();
+
+		builder.Services.AddSingleton<CoaxarViewModel>();
+
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
 		return builder.Build();

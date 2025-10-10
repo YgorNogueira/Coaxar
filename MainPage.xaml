@@ -55,50 +55,50 @@
                     StrokeShape="RoundRectangle 20"
                     >
                     <Grid
-                    HorizontalOptions="Fill"
-                    VerticalOptions="Fill"
-                    >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height=".2*"/>
-                    </Grid.RowDefinitions>
-
-                    <Image
-                        Grid.Row="0"
-                        Aspect="AspectFill"
-                        Grid.RowSpan="2"
-                        Source="anurahug.jpg"
-                        />
-
-                    <VerticalStackLayout
-                        Grid.Row="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill"
                         >
-                        <Label
-                            Margin="15,0"
-                            FontFamily="POPS"
-                            Text="Descubra espécies incríveis"
-                            TextColor="White"
-                            HorizontalTextAlignment="Start"
-                            />
-                        
-                        <Label
-                            Margin="15,0"
-                            FontFamily="POPR"
-                            FontSize="12"
-                            Text="Sapos, rãs e pererecas de Tapacurá"
-                            TextColor="White"
-                            HorizontalTextAlignment="Start"
-                            />
-                    </VerticalStackLayout>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height=".2*"/>
+                        </Grid.RowDefinitions>
 
-                </Grid>
+                        <Image
+                            Grid.Row="0"
+                            Aspect="AspectFill"
+                            Grid.RowSpan="2"
+                            Source="anurahug.jpg"
+                            />
+
+                        <VerticalStackLayout
+                            Grid.Row="1"
+                            >
+                            <Label
+                                Margin="15,0"
+                                FontFamily="POPS"
+                                Text="Descubra espécies incríveis"
+                                TextColor="White"
+                                HorizontalTextAlignment="Start"
+                                />
+
+                            <Label
+                                Margin="15,0"
+                                FontFamily="POPR"
+                                FontSize="12"
+                                Text="Sapos, rãs e pererecas de Tapacurá"
+                                TextColor="White"
+                                HorizontalTextAlignment="Start"
+                                />
+                        </VerticalStackLayout>
+
+                    </Grid>
                 </Border>
 
                 <Border
                     Grid.Row="1"
                     Padding="15"
                     StrokeShape="RoundRectangle 20"
-                    HorizontalOptions="Fill"                                                                                        
+                    HorizontalOptions="Fill"
                     VerticalOptions="Fill"
                     Stroke="Transparent"
                     BackgroundColor="White"
@@ -119,6 +119,7 @@
                                     VerticalOptions="Center"
                                     BackgroundColor="Transparent"
                                     ImageSource="bookicon.png"
+                                    Clicked="OnGoListClicked"
                                     BorderColor="Transparent"
                                     />
                         </Border>
@@ -133,7 +134,7 @@
                                 FontSize="14"
                                 FontFamily="POPR"
                                 />
-                            
+
                             <Label
                                 Text="Conheça diferentes tipos de anuros"
                                 TextColor="Black"
@@ -143,59 +144,59 @@
                                 FontFamily="POPR"
                                 />
                         </VerticalStackLayout>
-                        
+
                     </HorizontalStackLayout>
-                    
+
                 </Border>
 
                 <Border
-    Grid.Row="2"
-    Padding="15"
-    StrokeShape="RoundRectangle 20"
-    HorizontalOptions="Fill"                                                                                        
-    VerticalOptions="Fill"
-    Stroke="Transparent"
-    BackgroundColor="White"
-    >
+                    Grid.Row="2"
+                    Padding="15"
+                    StrokeShape="RoundRectangle 20"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"
+                    Stroke="Transparent"
+                    BackgroundColor="White"
+                    >
 
                     <HorizontalStackLayout
-        Spacing="10"
-        VerticalOptions="Center"
-        HorizontalOptions="Fill"
-        >
+                        Spacing="10"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Fill"
+                        >
 
                         <Border
-            Background="#DBEAFE"
-            StrokeThickness="0.1"
-            StrokeShape="RoundRectangle 10"
-            >
+                            Background="#DBEAFE"
+                            StrokeThickness="0.1"
+                            StrokeShape="RoundRectangle 10"
+                            >
                             <Button HorizontalOptions="Fill"
-                    VerticalOptions="Center"
-                    BackgroundColor="Transparent"
-                    ImageSource="quizicon.png"
-                    BorderColor="Transparent"
-                    />
+                                    VerticalOptions="Center"
+                                    BackgroundColor="Transparent"
+                                    ImageSource="quizicon.png"
+                                    BorderColor="Transparent"
+                                    />
                         </Border>
 
                         <VerticalStackLayout
-            VerticalOptions="Center"
-            >
+                            VerticalOptions="Center"
+                            >
                             <Label
-                Text="Quiz Educativo"
-                TextColor="Black"
-                VerticalOptions="Center"
-                FontSize="14"
-                FontFamily="POPR"
-                />
+                                Text="Quiz Educativo"
+                                TextColor="Black"
+                                VerticalOptions="Center"
+                                FontSize="14"
+                                FontFamily="POPR"
+                                />
 
                             <Label
-                Text="Conheça diferentes tipos de anuros"
-                TextColor="Black"
-                Opacity="0.8"
-                VerticalOptions="Center"
-                FontSize="12"
-                FontFamily="POPR"
-                />
+                                Text="Conheça diferentes tipos de anuros"
+                                TextColor="Black"
+                                Opacity="0.8"
+                                VerticalOptions="Center"
+                                FontSize="12"
+                                FontFamily="POPR"
+                                />
                         </VerticalStackLayout>
 
                     </HorizontalStackLayout>

@@ -13,6 +13,10 @@ namespace CoaxarApp
             InitializeComponent();
         }
 
+        private async void OnGoListCLicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(ListPage));
+        }
     }
 
 }
