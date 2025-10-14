@@ -1,4 +1,3 @@
-using CoaxarApp.ViewModels;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Text.Json;
@@ -15,8 +14,7 @@ public partial class HomePage : ContentPage
     private Layout _loadingOverlay = default!;
 
     // ViewModel com a coleção
-    private readonly CoaxarViewModel viewModel = new CoaxarViewModel();
-    public HomePage()
+    public HomePage(CoaxarViewModel viewModel, AnimalImporter importer)
     {
         InitializeComponent();
 
@@ -26,6 +24,7 @@ public partial class HomePage : ContentPage
         var originalContent = this.Content;            // Image
         this.Content = _rootGrid;
         _rootGrid.Children.Add((View)originalContent); // reparent do HomeImage
+
 
         // Overlay "Carregando..."
         _spinner = new ActivityIndicator
@@ -59,9 +58,12 @@ public partial class HomePage : ContentPage
         _loadingOverlay.Children.Add(_loadingLabel);
 
         _rootGrid.Children.Add(_loadingOverlay);
+
+        HomeLoaded(viewModel);
+
     }
 
-    private async void HomeLoaded(object sender, EventArgs e)
+    private async void HomeLoaded(CoaxarViewModel viewModel)
     {
         try
         {
@@ -133,11 +135,9 @@ public partial class HomePage : ContentPage
         };
         var dtos = JsonSerializer.Deserialize<List<AnimalDto>>(json, options) ?? new();
 
-        // 3) (Opcional) limpar coleção na UI thread
         if (clearFirst)
             await MainThread.InvokeOnMainThreadAsync(() => target.Clear());
 
-        // 4) Mapear e adicionar na UI thread
         foreach (var dto in dtos)
         {
             var model = MapToAnimalModel(dto);
@@ -169,9 +169,9 @@ public partial class HomePage : ContentPage
             MicroHabitat = Clean(r.Microhabitat),
             DiscoveryDate = Clean(r.DescritorEAno),
             Habit = Clean(r.Habito),
-            EndangeredInternational = IsThreatened(r.EstadoIntl),
-            EndangeredNational = IsThreatened(r.EstadoNac),
-            EndangeredState = IsThreatened(r.EstadoEst),
+            EndangeredInternational = Clean(r.EstadoIntl),
+            EndangeredNational = Clean(r.EstadoNac),
+            EndangeredState = Clean(r.EstadoEst),
             Size = Clean(r.Tamanho),
             VocalizationPath = null
         };

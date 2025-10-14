@@ -2,12 +2,146 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CoaxarApp.ListPage"
-             Title="NewPage1">
-    <ScrollView>
+             Background="White"
+             >
+    <Grid
+        RowDefinitions=" .2*, *"
 
-        <CollectionView>
+        >
+
+        <Border
+            Grid.Row="0"
+            StrokeThickness="0.2"
+            StrokeShape="RoundRectangle 0,0,5,5"
+            >
+            <VerticalStackLayout
+                VerticalOptions="Fill"
+                HorizontalOptions="Fill"
+                Spacing="10"
+                Padding="15"
+                >
+
+                <Label
+                    Margin="10,0"
+                    Text="Explorar Espécies"
+                    TextColor="Black"
+                    FontFamily="POPR"
+                    FontSize="14"
+                    />
+
+                <SearchBar
+                    BackgroundColor="LightGray"
+                    FontSize="12"
+                    FontFamily="POPR"
+                    TextColor="Black"
+                    Placeholder="Encontre as espécies"
+                    />
+
+
+
+            </VerticalStackLayout>
+        </Border>
+
+        <CollectionView
+
+            Grid.Row="1"
+            x:Name="AnuraListView"
+            ItemsLayout="VerticalList"
+            ItemsSource="{Binding Animals}"
+            >
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        StrokeShape="RoundRectangle 10"
+                        >
+                        <Grid
+                            RowDefinitions=" .6*,*"
+                            VerticalOptions="Fill"
+                            HorizontalOptions="Fill"
+                            >
+
+                            <ImageButton
+                                Grid.Row="0"
+                                Source="anurahug.jpg"
+                                Aspect="AspectFit"
+                                />
+
+                            <Border
+                                Margin="10"
+                                StrokeShape="RoundRectangle 10"
+                                HorizontalOptions="End"
+                                VerticalOptions="Start"
+                                BackgroundColor="White"
+                                Padding="5"
+                                >
+                                <Label
+                                    Text="{Binding EndangeredInternational}"
+                                    HorizontalOptions="End"
+                                    TextColor="Black"
+                                    FontFamily="POPR"
+                                    FontSize="10"
+                                    />
+                            </Border>
+
+                            <VerticalStackLayout
+                                Spacing="2"
+                                Grid.Row="1"
+                                VerticalOptions="Fill"
+                                HorizontalOptions="Fill"
+                                Padding="5"
+                                >
+
+                                <Label
+                                    FontFamily="POPS"
+                                    FontSize="10"
+                                    Text="{Binding CommonName}"
+                                    TextColor="Black"
+                                    />
+
+                                <Label
+                                    FontFamily="POPR"
+                                    FontSize="8"
+                                    FontAttributes="Italic"
+                                    Text="{Binding Species}"
+                                    TextColor="Black"
+                                    />
+
+                                <Label
+                                    FontFamily="POPR"
+                                    FontSize="8"
+                                    Text="{Binding MorphDescription}"
+                                    LineBreakMode="MiddleTruncation"
+                                    TextColor="Black"
+                                    />
+
+                                <Border
+                                    BackgroundColor="#DCFCE7"
+                                    HorizontalOptions="Start"
+                                    StrokeShape="RoundRectangle 5"
+                                    Padding="2"
+                                    Stroke="Transparent"
+                                    >
+
+                                    <Label
+                                        Text="{Binding Size}"
+                                        TextColor="#008236"
+                                        FontSize="8"
+                                        FontFamily="POPS"
+                                        />
+
+                                </Border>
+
+
+
+                            </VerticalStackLayout>
+
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
 
         </CollectionView>
+    </Grid>
 
-    </ScrollView>
 </ContentPage>

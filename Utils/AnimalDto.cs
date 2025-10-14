@@ -1,5 +1,4 @@
-﻿using CoaxarApp.ViewModels;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -83,9 +82,9 @@ public class AnimalImporter
             MicroHabitat = Clean(r.Microhabitat),
             DiscoveryDate = Clean(r.DescritorEAno),
             Habit = Clean(r.Habito),
-            EndangeredInternational = IsThreatened(r.EstadoIntl),
-            EndangeredNational = IsThreatened(r.EstadoNac),
-            EndangeredState = IsThreatened(r.EstadoEst),
+            EndangeredInternational = Clean(r.EstadoIntl),
+            EndangeredNational = Clean(r.EstadoNac),
+            EndangeredState = Clean(r.EstadoEst),
             Size = Clean(r.Tamanho),
             VocalizationPath = null
         };
