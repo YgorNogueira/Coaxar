@@ -23,8 +23,9 @@ public static class MauiProgram
 		builder.Services.AddTransient<MainPage>();
 		builder.Services.AddTransient<ListPage>();
 		builder.Services.AddTransient<HomePage>();
+		builder.Services.AddTransient<DetailsPage>();
 
-		builder.Services.AddSingleton<CoaxarViewModel>();
+        builder.Services.AddSingleton<CoaxarViewModel>();
 		builder.Services.AddTransient<AnimalImporter>();
 
 #if DEBUG

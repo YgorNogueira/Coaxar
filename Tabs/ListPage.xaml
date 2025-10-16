@@ -47,6 +47,9 @@
             Grid.Row="1"
             x:Name="AnuraListView"
             ItemsLayout="VerticalList"
+            SelectionMode="Single"
+            SelectionChangedCommand="{Binding OpenDetailsCommand}"
+            SelectionChangedCommandParameter="{Binding Source={x:Reference AnuraListView}, Path=SelectedItem}"
             ItemsSource="{Binding Animals}"
             >
 
@@ -61,7 +64,7 @@
                             HorizontalOptions="Fill"
                             >
 
-                            <ImageButton
+                            <Image
                                 Grid.Row="0"
                                 Source="anurahug.jpg"
                                 Aspect="AspectFit"
@@ -80,7 +83,7 @@
                                     HorizontalOptions="End"
                                     TextColor="Black"
                                     FontFamily="POPR"
-                                    FontSize="10"
+                                    FontSize="8"
                                     />
                             </Border>
 
@@ -115,24 +118,45 @@
                                     TextColor="Black"
                                     />
 
-                                <Border
-                                    BackgroundColor="#DCFCE7"
-                                    HorizontalOptions="Start"
-                                    StrokeShape="RoundRectangle 5"
-                                    Padding="2"
-                                    Stroke="Transparent"
+                                <HorizontalStackLayout
+                                    HorizontalOptions="Fill"
                                     >
 
-                                    <Label
-                                        Text="{Binding Size}"
-                                        TextColor="#008236"
-                                        FontSize="8"
-                                        FontFamily="POPS"
-                                        />
+                                    <Border
+                                        BackgroundColor="#DCFCE7"
+                                        HorizontalOptions="Start"
+                                        StrokeShape="RoundRectangle 5"
+                                        Padding="2"
+                                        Stroke="Transparent"
+                                        >
 
-                                </Border>
+                                        <Label
+                                            Text="{Binding Size}"
+                                            TextColor="#008236"
+                                            FontSize="8"
+                                            FontFamily="POPS"
+                                            />
+
+                                    </Border>
+
+                                    <Border
+                                        BackgroundColor="#DBEAFE"
+                                        StrokeShape="RoundRectangle 5"
+                                        Padding="2"
+                                        Stroke="Transparent"
+                                        >
+
+                                        <Label
+                                            Text="{Binding Habit}"
+                                            TextColor="#1447E6"
+                                            FontSize="8"
+                                            FontFamily="POPS"
+                                            />
+
+                                    </Border>
 
 
+                                </HorizontalStackLayout>
 
                             </VerticalStackLayout>
 
