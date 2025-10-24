@@ -37,8 +37,6 @@
                     Placeholder="Encontre as espécies"
                     />
 
-
-
             </VerticalStackLayout>
         </Border>
 
@@ -69,7 +67,7 @@
                                 Source="anurahug.jpg"
                                 Aspect="AspectFit"
                                 >
-                               
+
                             </Image>
 
                             <Border

@@ -16,7 +16,6 @@ public class AnimalDto
     [JsonPropertyName("Hábito")] public string? Habito { get; set; }
     [JsonPropertyName("Microhabitat")] public string? Microhabitat { get; set; }
     [JsonPropertyName("Alimentação")] public string? Alimentacao { get; set; }
-
     [JsonPropertyName("Estado de conservação internacional")] public string? EstadoIntl { get; set; }
     [JsonPropertyName("Estado de conservação nacional")] public string? EstadoNac { get; set; }
     [JsonPropertyName("Estado de conservação estadual")] public string? EstadoEst { get; set; }
