@@ -68,7 +68,9 @@
                                 Grid.Row="0"
                                 Source="anurahug.jpg"
                                 Aspect="AspectFit"
-                                />
+                                >
+                               
+                            </Image>
 
                             <Border
                                 Margin="10"

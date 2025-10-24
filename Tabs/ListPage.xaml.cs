@@ -8,4 +8,9 @@ public partial class ListPage : ContentPage
 		BindingContext = viewModel;
     }
 
+	private void OnImageClicked(object sender, EventArgs e)
+	{
+		Shell.Current.GoToAsync(nameof(DetailsPage));
+	}
+
 }

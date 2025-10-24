@@ -2,10 +2,70 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CoaxarApp.DetailsPage"
+             BackgroundColor="#FFFFFF"
              >
-    <ScrollView
-
+    <Grid
+        RowDefinitions=".6*, *"
         >
 
-    </ScrollView>
+        <Border
+            StrokeShape="RoundRectangle 5"
+            >
+            <Grid
+                RowDefinitions=".7*, *"
+                >
+                <Image
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Source="anurahug.jpg"
+                    Aspect="Fill"
+                    />
+
+                <Border
+                    Margin="10"
+                    StrokeShape="RoundRectangle 10"
+                    HorizontalOptions="End"
+                    VerticalOptions="Start"
+                    BackgroundColor="White"
+                    Padding="5"
+                    >
+                    <Label
+                        Text="{Binding SelectedAnimal.EndangeredInternational}"
+                        HorizontalOptions="End"
+                        TextColor="Black"
+                        FontFamily="POPR"
+                        FontSize="8"
+                        />
+                </Border>
+
+                <VerticalStackLayout
+                    Padding="10"
+                    VerticalOptions="End"
+                    Grid.Row="1"
+                    >
+
+                    <Label
+                        FontFamily="POPS"
+                        FontSize="12"
+                        Text="{Binding SelectedAnimal.CommonName}"
+                        />
+
+                    <Label
+                        FontFamily="POPR"
+                        FontSize="12"
+                        Text="{Binding SelectedAnimal.Species}"
+                        FontAttributes="Italic"
+                        />
+
+                </VerticalStackLayout>
+
+            </Grid>
+        </Border>
+
+        <Grid
+            Grid.Row="1"
+            >
+        </Grid>
+
+    </Grid>
 </ContentPage>
