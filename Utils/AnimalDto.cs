@@ -19,6 +19,7 @@ public class AnimalDto
     [JsonPropertyName("Estado de conservação internacional")] public string? EstadoIntl { get; set; }
     [JsonPropertyName("Estado de conservação nacional")] public string? EstadoNac { get; set; }
     [JsonPropertyName("Estado de conservação estadual")] public string? EstadoEst { get; set; }
+    [JsonPropertyName("Vocalização")] public string? Vocalizacao { get; set; }
 }
 
 // Importador instanciável que popula a coleção da ViewModel
@@ -85,7 +86,7 @@ public class AnimalImporter
             EndangeredNational = Clean(r.EstadoNac),
             EndangeredState = Clean(r.EstadoEst),
             Size = Clean(r.Tamanho),
-            VocalizationPath = null
+            VocalizationPath = Clean(r.Vocalizacao),
         };
     }
 }

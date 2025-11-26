@@ -7,4 +7,16 @@ public partial class DetailsPage : ContentPage
 		InitializeComponent();
 		BindingContext = vm;
     }
+
+    private void OnPlayClicked(object sender, EventArgs e)
+    {
+        try
+        {
+            VocPlayer.Play();
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
 }
