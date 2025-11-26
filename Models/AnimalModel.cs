@@ -1,9 +1,10 @@
-﻿using System;
+﻿using CommunityToolkit.Maui.Views;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text.RegularExpressions;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CoaxarApp
@@ -110,6 +111,8 @@ namespace CoaxarApp
 
         //Caminho do arquivo de áudio
         public string? VocalizationPath { get; set; }
+        public MediaSource VocalizationSource =>
+        MediaSource.FromResource(VocalizationPath);
 
         private static string ParseStatus(string? value)
         {

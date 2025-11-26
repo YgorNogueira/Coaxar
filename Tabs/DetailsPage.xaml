@@ -118,7 +118,7 @@
 
                             <toolkit:MediaElement
                                 x:Name="VocPlayer"
-                                Source="{Binding SelectedAnimal.VocalizationPath}"
+                                Source="{Binding SelectedAnimal.VocalizationSource}"
                                 ShouldAutoPlay="True"
                                 />
 
