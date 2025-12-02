@@ -1,3 +1,5 @@
+using CommunityToolkit.Maui.Views;
+
 namespace CoaxarApp;
 
 public partial class DetailsPage : ContentPage
@@ -8,15 +10,4 @@ public partial class DetailsPage : ContentPage
 		BindingContext = vm;
     }
 
-    private void OnPlayClicked(object sender, EventArgs e)
-    {
-        try
-        {
-            VocPlayer.Play();
-        }
-        catch(Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-    }
 }

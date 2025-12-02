@@ -1,134 +1,265 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="CoaxarApp.DetailsPage"
-             BackgroundColor="#FFFFFF"
-             >
-    <Grid
-        RowDefinitions=".6*, *"
-        >
+             BackgroundColor="White">
 
+    <Grid RowDefinitions=".55*, *">
+
+        <!-- ======================= -->
+        <!--         IMAGEM          -->
+        <!-- ======================= -->
         <Border
-            StrokeShape="RoundRectangle 5"
-            >
-            <Grid
-                RowDefinitions=".7*, *"
-                >
-                <Image
-                    Grid.Row="0"
-                    Grid.RowSpan="2"
-                    Source="anurahug.jpg"
-                    Aspect="Fill"
-                    />
+            Grid.Row="0"
+            StrokeShape="RoundRectangle 0,0,25,25"
+            BackgroundColor="Transparent">
 
+            <Grid>
+
+                <!-- FOTO -->
+                <Image
+                    Source="anurahug.jpg"
+                    Aspect="AspectFill"/>
+
+                <!-- SELO DE RISCO -->
                 <Border
-                    Margin="10"
-                    StrokeShape="RoundRectangle 10"
+                    Margin="15"
+                    Padding="6"
                     HorizontalOptions="End"
                     VerticalOptions="Start"
                     BackgroundColor="White"
-                    Padding="5"
-                    >
+                    StrokeShape="RoundRectangle 10">
+
                     <Label
                         Text="{Binding SelectedAnimal.EndangeredInternational}"
-                        HorizontalOptions="End"
-                        TextColor="Black"
                         FontFamily="POPR"
-                        FontSize="8"
-                        />
+                        TextColor="Black"
+                        FontSize="12"/>
                 </Border>
 
+                <!-- TÍTULOS SOBRE A IMAGEM -->
                 <VerticalStackLayout
-                    Padding="10"
-                    VerticalOptions="End"
-                    Grid.Row="1"
-                    >
+                    Padding="25"
+                    VerticalOptions="End">
 
                     <Label
-                        FontFamily="POPS"
-                        FontSize="12"
                         Text="{Binding SelectedAnimal.CommonName}"
-                        />
+                        FontFamily="POPS"
+                        FontSize="22"
+                        TextColor="White"/>
 
                     <Label
-                        FontFamily="POPR"
-                        FontSize="12"
                         Text="{Binding SelectedAnimal.Species}"
+                        FontFamily="POPR"
+                        FontSize="14"
                         FontAttributes="Italic"
-                        />
+                        TextColor="White"/>
 
                 </VerticalStackLayout>
 
             </Grid>
         </Border>
 
-        <ScrollView
-            Grid.Row="1"
-            >
 
-            <Grid
-                RowDefinitions=".4*, .2*, *"
-                >
+        <!-- ======================= -->
+        <!--    CONTEÚDO INFERIOR    -->
+        <!-- ======================= -->
+        <ScrollView Grid.Row="1">
 
+            <VerticalStackLayout
+                Spacing="25"
+                Padding="20">
+
+                <!-- CARD SOBREPOSTO (Tamanho / Habitat / Som) -->
                 <Border
-                    Grid.Row="0"
-                    StrokeShape="RoundRectangle 5"
-                    StrokeThickness="1.2"
-                    Opacity="0.4"
-                    Padding="5"
-                    >
-                    <HorizontalStackLayout
-                        BackgroundColor="#FFFFFF"
-                        HorizontalOptions="Center"
-                        Spacing="15"
-                        >
+                    Padding="25"
+                    BackgroundColor="White"
+                    Stroke="#D9D9D9"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 20"
+                    Shadow="4">
 
-                        <VerticalStackLayout
-                            VerticalOptions="Start"
-                            HorizontalOptions="Center"
-                            >
-                            <Border
-                                StrokeShape="RoundRectangle 5"
-                                Padding="2"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                BackgroundColor="#DCFCE7"
-                                Stroke="Transparent"
-                                >
+                    <Grid ColumnDefinitions="*,*,*"
+                          ColumnSpacing="20">
 
-                                <Image
-                                    Source="ruler.png"
-                                    />
-
+                        <!-- TAMANHO -->
+                        <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center">
+                            <Border Background="#DCFCE7"
+                                    Padding="6"
+                                    Stroke="Transparent"
+                                    StrokeShape="RoundRectangle 10">
+                                <Image Source="ruler.png" HeightRequest="24"/>
                             </Border>
 
-                            <Label
-                                FontFamily="POPR"
-                                FontSize="6"
-                                TextColor="Black"
-                                Text="{Binding SelectedAnimal.Size}"
-                                />
+                            <Label Text="Tamanho"
+                                   FontFamily="POPR"
+                                   FontSize="10"
+                                   TextColor="Black"
+                                   HorizontalTextAlignment="Center"/>
 
-                            <Button
-                                Clicked="OnPlayClicked"
-                                Text="play">
-
-                            </Button>
-
-                            <toolkit:MediaElement
-                                x:Name="VocPlayer"
-                                Source="{Binding SelectedAnimal.VocalizationSource}"
-                                ShouldAutoPlay="True"
-                                />
-
+                            <Label Text="{Binding SelectedAnimal.Size}"
+                                   FontFamily="POPR"
+                                   FontAttributes="Bold"
+                                   FontSize="10"
+                                   TextColor="Black"
+                                   HorizontalTextAlignment="Center"/>
                         </VerticalStackLayout>
 
-                    </HorizontalStackLayout>
+
+                        <!-- HABITAT -->
+                        <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center">
+                            <Border Background="#DBEAFE"
+                                    Padding="6"
+                                    Stroke="Transparent"
+                                    StrokeShape="RoundRectangle 10">
+                                <Image Source="point.png" HeightRequest="24"/>
+                            </Border>
+
+                            <Label Text="Habitat"
+                                   FontFamily="POPR"
+                                   FontSize="10"
+                                   TextColor="Black"
+                                   HorizontalTextAlignment="Center"/>
+
+                            <Label Text="{Binding SelectedAnimal.MicroHabitat}"
+                                   FontFamily="POPR"
+                                   FontAttributes="Bold"
+                                   LineBreakMode="MiddleTruncation"
+                                   MaxLines="3"
+                                   FontSize="10"
+                                   TextColor="Black"
+                                   HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+
+
+                        <!-- SOM -->
+                        <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center">
+                            <Border Background="#F3E8FF"
+                                    Padding="6"
+                                    Stroke="Transparent"
+                                    StrokeShape="RoundRectangle 10">
+                                <Image Source="sound.png" HeightRequest="24"/>
+                            </Border>
+
+                            <Label Text="Som"
+                                   FontFamily="POPR"
+                                   FontSize="10"
+                                   TextColor="Black"
+                                   HorizontalTextAlignment="Center"/>
+
+                            <Label Text="Ouvir"
+                                   FontFamily="POPR"
+                                   FontAttributes="Bold"
+                                   FontSize="10"
+                                   TextColor="Black"
+                                   HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+
+                    </Grid>
                 </Border>
-            </Grid>
+
+
+                <!-- ======================= -->
+                <!--        ABAS             -->
+                <!-- ======================= -->
+                <Grid ColumnDefinitions="*,*,*" Margin="10">
+
+                    <!-- ABA SOBRE -->
+                    <Border Grid.Column="0"
+                            Padding="10"
+                            BackgroundColor="#F4F4F4"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 15">
+                        <Label Text="Sobre"
+                               FontFamily="POPR"
+                               FontSize="14"
+                               HorizontalOptions="Center"/>
+                    </Border>
+
+                    <!-- ABA CARACTERÍSTICAS -->
+                    <Border Grid.Column="1"
+                            Padding="10"
+                            BackgroundColor="#F4F4F4"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 15">
+                        <Label Text="Características"
+                               FontFamily="POPR"
+                               FontSize="14"
+                               HorizontalOptions="Center"/>
+                    </Border>
+
+                    <!-- ABA CURIOSIDADES -->
+                    <Border Grid.Column="2"
+                            Padding="10"
+                            BackgroundColor="#F4F4F4"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 15">
+                        <Label Text="Curiosidades"
+                               FontFamily="POPR"
+                               FontSize="14"
+                               HorizontalOptions="Center"/>
+                    </Border>
+
+                </Grid>
+
+
+                <!-- ======================= -->
+                <!--    LISTA DE ITENS       -->
+                <!-- ======================= -->
+
+                <VerticalStackLayout Spacing="15">
+
+                    <!-- ITEM 1 -->
+                    <Border BackgroundColor="White"
+                            Padding="15"
+                            Stroke="#E7E7E7"
+                            StrokeShape="RoundRectangle 15">
+                        <HorizontalStackLayout Spacing="10">
+                            <Image Source="spark.png" HeightRequest="20"/>
+                            <Label Text="Produz uma secreção cerosa que protege contra desidratação"
+                                   FontFamily="POPR"
+                                   FontSize="12"
+                                   TextColor="Black"
+                                   VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </Border>
+
+                    <!-- ITEM 2 -->
+                    <Border BackgroundColor="White"
+                            Padding="15"
+                            Stroke="#E7E7E7"
+                            StrokeShape="RoundRectangle 15">
+                        <HorizontalStackLayout Spacing="10">
+                            <Image Source="spark.png" HeightRequest="20"/>
+                            <Label Text="Pode mudar ligeiramente de cor conforme a temperatura"
+                                   FontFamily="POPR"
+                                   FontSize="12"
+                                   TextColor="Black"
+                                   VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </Border>
+
+                    <!-- ITEM 3 -->
+                    <Border BackgroundColor="White"
+                            Padding="15"
+                            Stroke="#E7E7E7"
+                            StrokeShape="RoundRectangle 15">
+                        <HorizontalStackLayout Spacing="10">
+                            <Image Source="spark.png" HeightRequest="20"/>
+                            <Label Text="Põe ovos em folhas sobre a água"
+                                   FontFamily="POPR"
+                                   FontSize="12"
+                                   TextColor="Black"
+                                   VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </Border>
+
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
 
         </ScrollView>
 
     </Grid>
+
 </ContentPage>
