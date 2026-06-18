@@ -3,7 +3,8 @@
     x:Class="CoaxarApp.HomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    BackgroundColor="#613909"
+    BackgroundColor="#004E56"
+    BackgroundImageSource="lehp_texture.png"
     Loaded="HomeLoaded">
 
 
@@ -13,7 +14,7 @@
         HeightRequest="128"
         HorizontalOptions="Center"
         Opacity="0"
-        Source="coaxarlogo.png"
+        Source="logo_coaxar.png"
         VerticalOptions="Center"
         WidthRequest="128" />
 

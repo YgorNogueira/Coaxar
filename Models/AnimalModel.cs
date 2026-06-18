@@ -1,68 +1,65 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CoaxarApp
+﻿namespace CoaxarApp.Models
 {
     public class AnimalModel
     {
-        //Nome do animal
-        public required string Name { get; set; }
+        public int Id { get; set; }
 
-        //Nome científico do animal
+        public string Name { get; set; } = string.Empty;
+
         public string? ScientificName { get; set; }
 
-        //Descrição morfológica do animal
         public string? MorphDescription { get; set; }
 
-        //Distribuição geográfica do animal
         public string? Distribution { get; set; }
 
-        //Nome do autor que descreveu o animal e ano
+        // Autor e ano de descrição, ex: " (Cope, 1862)"
         public string? DiscoveryDate { get; set; }
 
-        //Locais onde a espécie ocorre
         public string? Habitat { get; set; }
 
-        //Hábito de vida do animal
-        //EX: Arborícola
-        public string Habit { get; set; }
+        public int FamiliaId { get; set; }
 
-        //Se é diurno ou noturno
-        public string WayOfLife { get; set; }
+        public string? Familia { get; set; }
 
-        //Se está ameaçado
+        public string? Genero { get; set; }
+
+        // Caminho da imagem principal da espécie
+        public string? ImagemPath { get; set; }
+
+        // Imagem em maior resolução usada no cabeçalho da tela de detalhe.
+        public string? ImagemDetalhePath { get; set; }
+
+        // Caminho da imagem do espectrograma
+        public string? EspectrogramaPath { get; set; }
+
+        // Caminho do mapa de distribuição
+        public string? MapaPath { get; set; }
+
+        // Crédito da foto para exibição na tela de detalhe
+        public string? FotoCredito { get; set; }
+
+        public string? CodigoSonoteca { get; set; }
+
+        public string Habit { get; set; } = string.Empty;
+
+        public string WayOfLife { get; set; } = string.Empty;
+
         public bool Endangered { get; set; }
 
-        //Tamanho do macho
         public float MaleSize { get; set; }
-        public string MaleSizeAsString { 
-            get 
-            {
-                if (MaleSize != 0)
-                    return $"{MaleSize} cm";
-                else
-                    return "Não informado";
-            } 
-        }
 
-        //Tamanho da fêmea
+        public string MaleSizeAsString =>
+            MaleSize != 0 ? $"~{MaleSize:G} cm" : "Não informado";
+
         public float FemaleSize { get; set; }
-        public string FemaleSizeAsString
-        {
-            get
-            {
-                if (FemaleSize != 0)
-                    return $"{FemaleSize} cm";
-                else
-                    return "Não informado";
-            }
-        }
 
-        //Caminho do arquivo de áudio
-        public string VocalizationPath { get; set; }
+        public string FemaleSizeAsString =>
+            FemaleSize != 0 ? $"~{FemaleSize:G} cm" : "Não informado";
 
+        // Canto de anúncio
+        public string VocalizationPath { get; set; } = string.Empty;
+
+        // Canto de soltura
+        public string? CantoDeSolturaPath { get; set; }
     }
 }

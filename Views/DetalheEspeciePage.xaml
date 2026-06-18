@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CoaxarApp.Views.DetalheEspeciePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#004E56"
+    BackgroundImageSource="lehp_texture.png"
+    Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="0" BackgroundColor="Transparent">
+
+            <!-- Imagem principal -->
+            <Grid HeightRequest="330">
+                <Image x:Name="HeaderImage" Aspect="AspectFill" />
+
+                <Border
+                    BackgroundColor="White"
+                    StrokeThickness="0"
+                    Padding="8,4"
+                    StrokeShape="RoundRectangle 4"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    Margin="12,44,0,0">
+                    <Label x:Name="FotoCreditoLabel" TextColor="#1B1B1B" FontSize="12" />
+                </Border>
+            </Grid>
+
+            <!-- Cabeçalho: nome + mapa -->
+            <Grid
+                BackgroundColor="White"
+                Padding="22,26,22,24"
+                ColumnDefinitions="*,120"
+                RowDefinitions="Auto,Auto">
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    TextColor="#001D22"
+                    FontSize="26"
+                    FontAttributes="Bold">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span x:Name="NomeCientificoSpan" FontAttributes="Bold,Italic" />
+                            <Span x:Name="AutorAnoSpan" FontAttributes="Bold" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label
+                    x:Name="NomeComumLabel"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    TextColor="#001D22"
+                    FontSize="22"
+                    Margin="0,4,0,0" />
+
+                <Image
+                    x:Name="MapaImage"
+                    Grid.RowSpan="2"
+                    Grid.Column="1"
+                    WidthRequest="110"
+                    HeightRequest="80"
+                    Aspect="AspectFit"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center" />
+            </Grid>
+
+            <!-- Morfologia: tamanhos + descrição -->
+            <Grid
+                BackgroundColor="White"
+                ColumnDefinitions="150,2,*"
+                Padding="0">
+
+                <Grid
+                    Grid.Column="0"
+                    Padding="14,20"
+                    RowDefinitions="Auto,Auto"
+                    ColumnDefinitions="*,*">
+
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Source="frog_male.png"
+                        WidthRequest="54"
+                        HeightRequest="54"
+                        HorizontalOptions="Center" />
+
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Source="frog_female.png"
+                        WidthRequest="54"
+                        HeightRequest="54"
+                        HorizontalOptions="Center" />
+
+                    <Label
+                        x:Name="TamanhoMachoLabel"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        TextColor="#001D22"
+                        FontSize="14"
+                        HorizontalOptions="Center"
+                        Margin="0,8,0,0" />
+
+                    <Label
+                        x:Name="TamanhoFemeaLabel"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        TextColor="#001D22"
+                        FontSize="14"
+                        HorizontalOptions="Center"
+                        Margin="0,8,0,0" />
+                </Grid>
+
+                <BoxView Grid.Column="1" WidthRequest="2" Color="#004E56" />
+
+                <Label
+                    Grid.Column="2"
+                    Padding="14,16,16,16"
+                    TextColor="#001D22"
+                    FontSize="13"
+                    LineHeight="1.35">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Morfologia: " FontAttributes="Bold" />
+                            <Span x:Name="MorfologiaSpan" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+
+            <!-- Separador verde -->
+            <BoxView HeightRequest="56" Color="#004E56" />
+
+            <!-- Canto de anúncio -->
+            <VerticalStackLayout
+                BackgroundColor="White"
+                Padding="28,26,28,28"
+                Spacing="20">
+
+                <Label
+                    Text="Canto de anúncio"
+                    TextColor="#001D22"
+                    FontSize="30"
+                    FontFamily="RussoOne"
+                    HorizontalOptions="Center" />
+
+                <Grid ColumnDefinitions="*,130" ColumnSpacing="18">
+                    <Image
+                        x:Name="EspectrogramaImage"
+                        Grid.Column="0"
+                        HeightRequest="280"
+                        Aspect="AspectFit" />
+
+                    <Border
+                        Grid.Column="1"
+                        WidthRequest="110"
+                        HeightRequest="110"
+                        StrokeThickness="0"
+                        BackgroundColor="#004E56"
+                        StrokeShape="RoundRectangle 55"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Path
+                            Fill="White"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Data="M 0 0 L 0 58 L 48 29 Z"
+                            WidthRequest="54"
+                            HeightRequest="64" />
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnPlayAnuncioTapped" />
+                        </Border.GestureRecognizers>
+                    </Border>
+                </Grid>
+
+                <Label
+                    x:Name="SclehpLabel"
+                    TextColor="#001D22"
+                    FontSize="10"
+                    FontAttributes="Bold"
+                    HorizontalOptions="End" />
+
+            </VerticalStackLayout>
+
+            <!-- Canto de Soltura -->
+            <Grid
+                BackgroundColor="White"
+                Padding="30,18"
+                ColumnDefinitions="*,Auto"
+                Margin="0,22,0,0">
+
+                <Label
+                    Text="Canto de Soltura"
+                    TextColor="#001D22"
+                    FontSize="28"
+                    FontFamily="RussoOne"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+                <Border
+                    Grid.Column="1"
+                    WidthRequest="48"
+                    HeightRequest="48"
+                    StrokeThickness="0"
+                    BackgroundColor="#004E56"
+                    StrokeShape="RoundRectangle 24"
+                    VerticalOptions="Center">
+                    <Path
+                        Fill="White"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Data="M 0 0 L 0 28 L 24 14 Z"
+                        WidthRequest="26"
+                        HeightRequest="30" />
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnPlaySolturaTapped" />
+                    </Border.GestureRecognizers>
+                </Border>
+            </Grid>
+
+            <BoxView HeightRequest="60" Color="#004E56" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

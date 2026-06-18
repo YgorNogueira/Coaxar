@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CoaxarApp.Views.EspeciesDaFamiliaPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:CoaxarApp.Models"
+    BackgroundColor="#004E56"
+    BackgroundImageSource="lehp_texture.png"
+    Shell.NavBarIsVisible="False">
+
+    <CollectionView
+        x:Name="EspeciesCollection"
+        Margin="28,0"
+        IsGrouped="True"
+        SelectionMode="Single"
+        SelectionChanged="OnEspecieSelected">
+
+        <CollectionView.Header>
+            <VerticalStackLayout Padding="0,36,0,0">
+
+                <Image
+                    Source="logo_coaxar.png"
+                    WidthRequest="120"
+                    HeightRequest="120"
+                    HorizontalOptions="Center"
+                    Aspect="AspectFit" />
+
+                <!-- Busca pronta para receber resultados do repositório/SQLite -->
+                <Border
+                    HeightRequest="54"
+                    Stroke="White"
+                    StrokeThickness="3"
+                    BackgroundColor="Transparent"
+                    StrokeShape="RoundRectangle 27"
+                    Margin="0,18,0,0">
+
+                    <Grid
+                        Padding="18,0"
+                        ColumnDefinitions="34,*"
+                        ColumnSpacing="12">
+
+                        <Ellipse
+                            WidthRequest="25"
+                            HeightRequest="25"
+                            Stroke="White"
+                            StrokeThickness="2"
+                            Fill="Transparent"
+                            VerticalOptions="Center" />
+
+                        <BoxView
+                            WidthRequest="14"
+                            HeightRequest="2"
+                            Color="White"
+                            Rotation="45"
+                            TranslationX="19"
+                            TranslationY="13"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start" />
+
+                        <Entry
+                            x:Name="BuscaEntry"
+                            Grid.Column="1"
+                            Placeholder="Encontre as espécies pelo nome"
+                            PlaceholderColor="White"
+                            TextColor="White"
+                            FontSize="16"
+                            VerticalOptions="Center"
+                            TextChanged="OnBuscaTextChanged" />
+
+                    </Grid>
+                </Border>
+
+                <Label
+                    x:Name="FamiliaTitulo"
+                    Text="Família"
+                    Style="{StaticResource CoaxarTitle}"
+                    HorizontalOptions="Center"
+                    Margin="0,16,0,8" />
+
+            </VerticalStackLayout>
+        </CollectionView.Header>
+
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout
+                Orientation="Vertical"
+                Span="2"
+                HorizontalItemSpacing="38"
+                VerticalItemSpacing="32" />
+        </CollectionView.ItemsLayout>
+
+        <CollectionView.GroupHeaderTemplate>
+            <DataTemplate x:DataType="models:GeneroGroup">
+                <Label
+                    Margin="0,16,0,0"
+                    TextColor="White"
+                    FontSize="22"
+                    FontFamily="RussoOne">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Gênero: " />
+                            <Span Text="{Binding Nome}" FontAttributes="Bold,Italic" />
+                            <Span Text=" " />
+                            <Span Text="{Binding NumeroEspeciesFormatado}" FontAttributes="None" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </DataTemplate>
+        </CollectionView.GroupHeaderTemplate>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="models:AnimalModel">
+                <VerticalStackLayout Spacing="8">
+                    <Border
+                        HeightRequest="145"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 26">
+                        <Image Source="{Binding ImagemPath}" Aspect="AspectFill" />
+                    </Border>
+                    <Label
+                        TextColor="White"
+                        FontSize="13"
+                        HorizontalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding ScientificName}" FontAttributes="Bold,Italic" />
+                                <Span Text="{Binding DiscoveryDate}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </VerticalStackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+
+        <CollectionView.Footer>
+            <BoxView HeightRequest="50" Color="Transparent" />
+        </CollectionView.Footer>
+
+    </CollectionView>
+</ContentPage>

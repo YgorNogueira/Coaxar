@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CoaxarApp.Views.FamiliasPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:CoaxarApp.Models"
+    BackgroundColor="#004E56"
+    BackgroundImageSource="lehp_texture.png"
+    Shell.NavBarIsVisible="False">
+
+    <CollectionView
+        x:Name="FamiliasCollection"
+        Margin="28,0"
+        SelectionMode="Single"
+        SelectionChanged="OnFamiliaSelected">
+
+        <CollectionView.Header>
+            <VerticalStackLayout Padding="0,36,0,0">
+
+                <Image
+                    Source="logo_coaxar.png"
+                    WidthRequest="104"
+                    HeightRequest="104"
+                    HorizontalOptions="Center"
+                    Aspect="AspectFit" />
+
+                <!-- Busca pronta para receber resultados do repositório/SQLite -->
+                <Border
+                    HeightRequest="54"
+                    Stroke="White"
+                    StrokeThickness="3"
+                    BackgroundColor="Transparent"
+                    StrokeShape="RoundRectangle 27"
+                    Margin="0,24,0,0">
+
+                    <Grid
+                        Padding="18,0"
+                        ColumnDefinitions="34,*"
+                        ColumnSpacing="12">
+
+                        <Ellipse
+                            WidthRequest="25"
+                            HeightRequest="25"
+                            Stroke="White"
+                            StrokeThickness="2"
+                            Fill="Transparent"
+                            VerticalOptions="Center" />
+
+                        <BoxView
+                            WidthRequest="14"
+                            HeightRequest="2"
+                            Color="White"
+                            Rotation="45"
+                            TranslationX="19"
+                            TranslationY="13"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start" />
+
+                        <Entry
+                            x:Name="BuscaEntry"
+                            Grid.Column="1"
+                            Placeholder="Encontre as espécies pelo nome"
+                            PlaceholderColor="White"
+                            TextColor="White"
+                            FontSize="16"
+                            VerticalOptions="Center"
+                            TextChanged="OnBuscaTextChanged" />
+
+                    </Grid>
+                </Border>
+
+                <Label
+                    Text="Famílias"
+                    Style="{StaticResource CoaxarTitle}"
+                    HorizontalOptions="Center"
+                    Margin="0,24,0,24" />
+
+            </VerticalStackLayout>
+        </CollectionView.Header>
+
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout
+                Orientation="Vertical"
+                Span="2"
+                HorizontalItemSpacing="18"
+                VerticalItemSpacing="24" />
+        </CollectionView.ItemsLayout>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="models:FamiliaModel">
+                <Border
+                    HeightRequest="150"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 28">
+
+                    <Grid>
+                        <Image Source="{Binding ImagemPath}" Aspect="AspectFill" />
+                        <BoxView
+                            VerticalOptions="End"
+                            HeightRequest="70"
+                            Color="Black"
+                            Opacity="0.48" />
+                        <Label
+                            Text="{Binding Nome}"
+                            TextColor="White"
+                            FontSize="14"
+                            FontFamily="RussoOne"
+                            FontAttributes="Bold"
+                            VerticalOptions="End"
+                            HorizontalOptions="Center"
+                            Margin="4,0,4,14" />
+                    </Grid>
+                </Border>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+
+        <CollectionView.Footer>
+            <BoxView HeightRequest="40" Color="Transparent" />
+        </CollectionView.Footer>
+
+    </CollectionView>
+</ContentPage>

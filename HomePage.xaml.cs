@@ -9,7 +9,6 @@ public partial class HomePage : ContentPage
 
 	private async void HomeLoaded(object sender, EventArgs e)
     {
-        // Define o título da página
         this.Title = "Coaxar";
 
 		await Task.Delay(500);
