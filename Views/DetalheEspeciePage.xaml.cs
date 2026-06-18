@@ -10,7 +10,7 @@ public partial class DetalheEspeciePage : ContentPage
 
     public int AnimalId
     {
-        set => CarregarAnimal(value);
+        set => _ = CarregarAnimalAsync(value);
     }
 
     public DetalheEspeciePage()
@@ -18,9 +18,9 @@ public partial class DetalheEspeciePage : ContentPage
         InitializeComponent();
     }
 
-    private void CarregarAnimal(int id)
+    private async Task CarregarAnimalAsync(int id)
     {
-        _animal = AnimalRepository.GetAnimalById(id);
+        _animal = await AnimalRepository.GetAnimalByIdAsync(id);
         if (_animal is null) return;
 
         HeaderImage.Source = _animal.ImagemDetalhePath ?? _animal.ImagemPath;

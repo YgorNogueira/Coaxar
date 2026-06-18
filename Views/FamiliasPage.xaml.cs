@@ -5,17 +5,30 @@ namespace CoaxarApp.Views;
 
 public partial class FamiliasPage : ContentPage
 {
+    private int _searchVersion;
+
     public FamiliasPage()
     {
         InitializeComponent();
-        AtualizarFamilias();
     }
 
-    void OnBuscaTextChanged(object sender, TextChangedEventArgs e) =>
-        AtualizarFamilias(e.NewTextValue);
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await AtualizarFamiliasAsync(BuscaEntry.Text);
+    }
 
-    private void AtualizarFamilias(string? busca = null) =>
-        FamiliasCollection.ItemsSource = AnimalRepository.GetFamilias(busca);
+    async void OnBuscaTextChanged(object sender, TextChangedEventArgs e) =>
+        await AtualizarFamiliasAsync(e.NewTextValue);
+
+    private async Task AtualizarFamiliasAsync(string? busca)
+    {
+        var version = ++_searchVersion;
+        var familias = await AnimalRepository.GetFamiliasAsync(busca);
+
+        if (version == _searchVersion)
+            FamiliasCollection.ItemsSource = familias;
+    }
 
     async void OnFamiliaSelected(object sender, SelectionChangedEventArgs e)
     {

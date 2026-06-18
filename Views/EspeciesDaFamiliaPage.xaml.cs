@@ -7,6 +7,7 @@ namespace CoaxarApp.Views;
 public partial class EspeciesDaFamiliaPage : ContentPage
 {
     private string _familiaNome = string.Empty;
+    private int _searchVersion;
 
     public string FamiliaNome
     {
@@ -14,7 +15,7 @@ public partial class EspeciesDaFamiliaPage : ContentPage
         {
             _familiaNome = Uri.UnescapeDataString(value ?? string.Empty);
             FamiliaTitulo.Text = _familiaNome;
-            AtualizarEspecies();
+            _ = AtualizarEspeciesAsync();
         }
     }
 
@@ -23,16 +24,21 @@ public partial class EspeciesDaFamiliaPage : ContentPage
         InitializeComponent();
     }
 
-    void OnBuscaTextChanged(object sender, TextChangedEventArgs e) =>
-        AtualizarEspecies(e.NewTextValue);
+    async void OnBuscaTextChanged(object sender, TextChangedEventArgs e) =>
+        await AtualizarEspeciesAsync(e.NewTextValue);
 
-    private void AtualizarEspecies(string? busca = null)
+    private async Task AtualizarEspeciesAsync(string? busca = null)
     {
         if (string.IsNullOrWhiteSpace(_familiaNome))
             return;
 
-        EspeciesCollection.ItemsSource =
-            AnimalRepository.GetGenerosDaFamilia(_familiaNome, busca);
+        var version = ++_searchVersion;
+        var grupos = await AnimalRepository.GetGenerosDaFamiliaAsync(
+            _familiaNome,
+            busca);
+
+        if (version == _searchVersion)
+            EspeciesCollection.ItemsSource = grupos;
     }
 
     async void OnEspecieSelected(object sender, SelectionChangedEventArgs e)

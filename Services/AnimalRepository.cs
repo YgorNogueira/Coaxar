@@ -1,10 +1,147 @@
 using CoaxarApp.Models;
+using SQLite;
 
 namespace CoaxarApp.Services;
 
 public static class AnimalRepository
 {
-    private static readonly List<FamiliaModel> Familias =
+    private static readonly SemaphoreSlim InitializationLock = new(1, 1);
+    private static SQLiteAsyncConnection? _database;
+    private static bool _initialized;
+
+    public static string DatabasePath => DatabaseConstants.DatabasePath;
+
+    public static async Task InitializeAsync()
+    {
+        if (_initialized)
+            return;
+
+        await InitializationLock.WaitAsync();
+        try
+        {
+            if (_initialized)
+                return;
+
+            _database = new SQLiteAsyncConnection(
+                DatabaseConstants.DatabasePath,
+                DatabaseConstants.Flags);
+
+            await _database.CreateTableAsync<FamiliaModel>();
+            await _database.CreateTableAsync<AnimalModel>();
+
+            await SeedAsync();
+            _initialized = true;
+        }
+        finally
+        {
+            InitializationLock.Release();
+        }
+    }
+
+    public static async Task<List<FamiliaModel>> GetFamiliasAsync(string? busca = null)
+    {
+        var database = await GetDatabaseAsync();
+        var familias = await database.Table<FamiliaModel>()
+            .OrderBy(familia => familia.Nome)
+            .ToListAsync();
+
+        if (string.IsNullOrWhiteSpace(busca))
+            return familias;
+
+        return familias
+            .Where(familia =>
+                familia.Nome.Contains(busca.Trim(), StringComparison.OrdinalIgnoreCase))
+            .ToList();
+    }
+
+    public static async Task<List<AnimalModel>> GetAnimaisDaFamiliaAsync(
+        string familiaNome,
+        string? busca = null)
+    {
+        var database = await GetDatabaseAsync();
+        var familia = await database.Table<FamiliaModel>()
+            .Where(item => item.Nome == familiaNome)
+            .FirstOrDefaultAsync();
+
+        if (familia is null)
+            return [];
+
+        var animais = await database.Table<AnimalModel>()
+            .Where(animal => animal.FamiliaId == familia.Id)
+            .OrderBy(animal => animal.Genero)
+            .ThenBy(animal => animal.ScientificName)
+            .ToListAsync();
+
+        if (string.IsNullOrWhiteSpace(busca))
+            return animais;
+
+        var termo = busca.Trim();
+        return animais
+            .Where(animal =>
+                animal.Name.Contains(termo, StringComparison.OrdinalIgnoreCase) ||
+                (animal.ScientificName?.Contains(
+                    termo,
+                    StringComparison.OrdinalIgnoreCase) ?? false))
+            .ToList();
+    }
+
+    public static async Task<List<GeneroGroup>> GetGenerosDaFamiliaAsync(
+        string familiaNome,
+        string? busca = null)
+    {
+        var animais = await GetAnimaisDaFamiliaAsync(familiaNome, busca);
+
+        return animais
+            .GroupBy(animal => animal.Genero ?? string.Empty)
+            .Select(grupo => new GeneroGroup(grupo.Key, grupo))
+            .ToList();
+    }
+
+    public static async Task<AnimalModel?> GetAnimalByIdAsync(int id)
+    {
+        var database = await GetDatabaseAsync();
+        return await database.Table<AnimalModel>()
+            .Where(animal => animal.Id == id)
+            .FirstOrDefaultAsync();
+    }
+
+    public static async Task<int> SaveFamiliaAsync(FamiliaModel familia)
+    {
+        var database = await GetDatabaseAsync();
+        return await database.InsertOrReplaceAsync(familia);
+    }
+
+    public static async Task<int> SaveAnimalAsync(AnimalModel animal)
+    {
+        var database = await GetDatabaseAsync();
+        return await database.InsertOrReplaceAsync(animal);
+    }
+
+    public static async Task<int> DeleteAnimalAsync(AnimalModel animal)
+    {
+        var database = await GetDatabaseAsync();
+        return await database.DeleteAsync(animal);
+    }
+
+    private static async Task<SQLiteAsyncConnection> GetDatabaseAsync()
+    {
+        await InitializeAsync();
+        return _database!;
+    }
+
+    private static async Task SeedAsync()
+    {
+        if (_database is null)
+            return;
+
+        if (await _database.Table<FamiliaModel>().CountAsync() == 0)
+            await _database.InsertAllAsync(CreateFamilias());
+
+        if (await _database.Table<AnimalModel>().CountAsync() == 0)
+            await _database.InsertAllAsync(CreateAnimais());
+    }
+
+    private static List<FamiliaModel> CreateFamilias() =>
     [
         new() { Id = 1,  Nome = "Aromobatidae",       ImagemPath = "familia_aromobatidae.png" },
         new() { Id = 2,  Nome = "Bufonidae",           ImagemPath = "familia_bufonidae.png" },
@@ -21,13 +158,14 @@ public static class AnimalRepository
         new() { Id = 13, Nome = "Pipidae",             ImagemPath = "familia_pipidae.png" },
     ];
 
-    private static readonly List<AnimalModel> Animais =
+    private static List<AnimalModel> CreateAnimais() =>
     [
         new()
         {
             Id = 5,
             Name = "Frostius sp.",
             ScientificName = "Frostius sp.",
+            DiscoveryDate = "",
             FamiliaId = 2,
             Familia = "Bufonidae",
             Genero = "Frostius",
@@ -52,9 +190,12 @@ public static class AnimalRepository
             MapaPath = "mapa_dypticha.png",
             FotoCredito = "Foto: Negromonte, I. O.",
             CodigoSonoteca = "SCLEHP: 001 / 002 / 003 / 004 / 005",
+            VocalizationPath = string.Empty,
+            CantoDeSolturaPath = null,
             Habitat = "Ambientes abertos, áreas urbanas e rurais",
             Habit = "Terrícola",
             WayOfLife = "Noturno",
+            Endangered = false,
         },
         new()
         {
@@ -69,9 +210,11 @@ public static class AnimalRepository
             FemaleSize = 8.0f,
             MorphDescription = "Corpo robusto com pele granulosa. Coloração dorsal variável, geralmente com tons marrons e manchas escuras irregulares.",
             ImagemPath = "rhinella_granulosa.png",
+            VocalizationPath = string.Empty,
             Habitat = "Ambientes abertos e savanas",
             Habit = "Terrícola",
             WayOfLife = "Noturno",
+            Endangered = false,
         },
         new()
         {
@@ -86,9 +229,11 @@ public static class AnimalRepository
             FemaleSize = 11.0f,
             MorphDescription = "Coloração dorsal castanho-acinzentada com manchas escuras. Ventre claro com manchas escuras dispersas.",
             ImagemPath = "rhinella_crucifer.png",
+            VocalizationPath = string.Empty,
             Habitat = "Mata Atlântica e Caatinga",
             Habit = "Terrícola",
             WayOfLife = "Noturno",
+            Endangered = false,
         },
         new()
         {
@@ -103,41 +248,11 @@ public static class AnimalRepository
             FemaleSize = 6.0f,
             MorphDescription = "Espécie de pequeno porte com coloração dorsal marrom e manchas irregulares.",
             ImagemPath = "rhinella_hoogmoedi.png",
+            VocalizationPath = string.Empty,
             Habitat = "Florestas de terra firme",
             Habit = "Terrícola",
             WayOfLife = "Noturno",
+            Endangered = false,
         },
     ];
-
-    public static List<FamiliaModel> GetFamilias(string? busca = null) =>
-        Familias
-            .Where(familia =>
-                string.IsNullOrWhiteSpace(busca) ||
-                familia.Nome.Contains(busca.Trim(), StringComparison.OrdinalIgnoreCase))
-            .OrderBy(familia => familia.Nome)
-            .ToList();
-
-    public static List<AnimalModel> GetAnimaisDaFamilia(
-        string familiaNome,
-        string? busca = null) =>
-        Animais
-            .Where(animal => animal.Familia == familiaNome)
-            .Where(animal =>
-                string.IsNullOrWhiteSpace(busca) ||
-                animal.Name.Contains(busca.Trim(), StringComparison.OrdinalIgnoreCase) ||
-                (animal.ScientificName?.Contains(
-                    busca.Trim(),
-                    StringComparison.OrdinalIgnoreCase) ?? false))
-            .ToList();
-
-    public static List<GeneroGroup> GetGenerosDaFamilia(
-        string familiaNome,
-        string? busca = null) =>
-        GetAnimaisDaFamilia(familiaNome, busca)
-            .GroupBy(animal => animal.Genero ?? string.Empty)
-            .Select(grupo => new GeneroGroup(grupo.Key, grupo))
-            .ToList();
-
-    public static AnimalModel? GetAnimalById(int id) =>
-        Animais.FirstOrDefault(animal => animal.Id == id);
 }

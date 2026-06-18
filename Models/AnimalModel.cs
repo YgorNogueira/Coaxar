@@ -1,9 +1,14 @@
-﻿namespace CoaxarApp.Models
+﻿using SQLite;
+
+namespace CoaxarApp.Models
 {
+    [Table("Animais")]
     public class AnimalModel
     {
+        [PrimaryKey]
         public int Id { get; set; }
 
+        [NotNull]
         public string Name { get; set; } = string.Empty;
 
         public string? ScientificName { get; set; }
@@ -17,10 +22,12 @@
 
         public string? Habitat { get; set; }
 
+        [Indexed]
         public int FamiliaId { get; set; }
 
         public string? Familia { get; set; }
 
+        [Indexed]
         public string? Genero { get; set; }
 
         // Caminho da imagem principal da espécie
@@ -48,11 +55,13 @@
 
         public float MaleSize { get; set; }
 
+        [Ignore]
         public string MaleSizeAsString =>
             MaleSize != 0 ? $"~{MaleSize:G} cm" : "Não informado";
 
         public float FemaleSize { get; set; }
 
+        [Ignore]
         public string FemaleSizeAsString =>
             FemaleSize != 0 ? $"~{FemaleSize:G} cm" : "Não informado";
 
