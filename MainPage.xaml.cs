@@ -18,4 +18,9 @@ public partial class MainPage : ContentPage
     {
         await Shell.Current.GoToAsync(nameof(FamiliasPage));
     }
+
+    async void OnGuiaDeUsoTapped(object sender, TappedEventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(GuiaDeUsoPage));
+    }
 }

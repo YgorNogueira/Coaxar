@@ -8,10 +8,10 @@ namespace CoaxarApp
         {
             InitializeComponent();
 
-            Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
             Routing.RegisterRoute(nameof(FamiliasPage), typeof(FamiliasPage));
             Routing.RegisterRoute(nameof(EspeciesDaFamiliaPage), typeof(EspeciesDaFamiliaPage));
             Routing.RegisterRoute(nameof(DetalheEspeciePage), typeof(DetalheEspeciePage));
+            Routing.RegisterRoute(nameof(GuiaDeUsoPage), typeof(GuiaDeUsoPage));
         }
     }
 }

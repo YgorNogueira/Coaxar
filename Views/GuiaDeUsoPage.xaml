@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CoaxarApp.Views.GuiaDeUsoPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#004550"
+    Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+
+            <!-- Topo: menu + logos -->
+            <Grid
+                Padding="28,42,28,0"
+                ColumnDefinitions="Auto,*,Auto">
+
+                <Border
+                    WidthRequest="46"
+                    HeightRequest="46"
+                    Stroke="White"
+                    StrokeThickness="3"
+                    BackgroundColor="Transparent"
+                    StrokeShape="RoundRectangle 23">
+                    <VerticalStackLayout
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Spacing="5">
+                        <BoxView WidthRequest="28" HeightRequest="4" CornerRadius="2" Color="White" />
+                        <BoxView WidthRequest="28" HeightRequest="4" CornerRadius="2" Color="White" />
+                        <BoxView WidthRequest="28" HeightRequest="4" CornerRadius="2" Color="White" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <HorizontalStackLayout
+                    Grid.Column="2"
+                    Spacing="14"
+                    VerticalOptions="Start">
+                    <Image Source="logo_ufrpe.png" WidthRequest="40" HeightRequest="48" Aspect="AspectFit" />
+                    <Image Source="logo_lehp.png" WidthRequest="70" HeightRequest="48" Aspect="AspectFit" />
+                </HorizontalStackLayout>
+            </Grid>
+
+            <!-- Logo principal -->
+            <Image
+                Source="logo_coaxar.png"
+                WidthRequest="150"
+                HeightRequest="150"
+                HorizontalOptions="Center"
+                Margin="0,6,0,26"
+                Aspect="AspectFit" />
+
+            <!-- Título -->
+            <Border
+                HeightRequest="80"
+                StrokeThickness="0"
+                BackgroundColor="White"
+                StrokeShape="RoundRectangle 28"
+                Margin="28,0,28,26">
+                <Label
+                    Text="Guia de Uso"
+                    Style="{StaticResource CoaxarButtonText}"
+                    FontSize="24"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Border>
+
+            <!-- Texto introdutório -->
+            <Label
+                Margin="28,0,28,32"
+                TextColor="White"
+                FontSize="14"
+                LineHeight="1.3"
+                Text="A Sonoteca Coaxar é uma plataforma de acesso público, disponível para toda a população. Por meio dela, estudantes, professores, pesquisadores e demais interessados podem conhecer os anfíbios anuros de Pernambuco, consultar informações sobre as espécies e ouvir suas vocalizações. A plataforma também pode ser utilizada como recurso de apoio em aulas, atividades de campo, ações de educação ambiental e outras práticas educativas. Descubra como explorar todas as suas funcionalidades abaixo." />
+
+            <!-- ===================== Seção 1: Busca por nome ===================== -->
+
+            <HorizontalStackLayout Margin="28,0,28,2" Spacing="8">
+                <Label Text="•" TextColor="White" FontSize="20" FontAttributes="Bold" />
+                <Label
+                    Text="Encontre uma espécie pelo nome"
+                    TextColor="White"
+                    FontFamily="OpenSansSemibold"
+                    FontSize="18"
+                    FontAttributes="Bold" />
+            </HorizontalStackLayout>
+
+            <Label
+                Margin="28,10,28,22"
+                TextColor="White"
+                FontSize="13"
+                Text="Digite o nome comum ou científico da espécie na barra de busca." />
+
+            <!-- Passo 1 -->
+            <Grid Margin="28,0,28,18" ColumnDefinitions="40,*" ColumnSpacing="14">
+                <Border
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    StrokeThickness="0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 20">
+                    <Label
+                        Text="1"
+                        TextColor="#004E56"
+                        FontFamily="RussoOne"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Border>
+
+                <Border
+                    Grid.Column="1"
+                    HeightRequest="44"
+                    Stroke="White"
+                    StrokeThickness="2"
+                    BackgroundColor="Transparent"
+                    StrokeShape="RoundRectangle 22"
+                    VerticalOptions="Center">
+                    <Grid Padding="14,0" ColumnDefinitions="22,*" ColumnSpacing="9">
+                        <Path
+                            Data="M 9,1 A 8,8 0 1 0 9,17 A 8,8 0 1 0 9,1 M 15,15 L 21,21"
+                            Stroke="White"
+                            StrokeThickness="2"
+                            Fill="Transparent"
+                            WidthRequest="22"
+                            HeightRequest="22"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Column="1"
+                            Text="Encontre as espécies pelo nome"
+                            TextColor="White"
+                            FontSize="12"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- Passo 2 -->
+            <Grid Margin="28,0,28,18" ColumnDefinitions="40,*" ColumnSpacing="14">
+                <Border
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    StrokeThickness="0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 20">
+                    <Label
+                        Text="2"
+                        TextColor="#004E56"
+                        FontFamily="RussoOne"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Border>
+
+                <Grid Grid.Column="1" ColumnDefinitions="*,Auto,*" ColumnSpacing="10">
+                    <Border
+                        HeightRequest="44"
+                        Stroke="White"
+                        StrokeThickness="2"
+                        BackgroundColor="Transparent"
+                        StrokeShape="RoundRectangle 22"
+                        VerticalOptions="Center">
+                        <Grid Padding="12,0" ColumnDefinitions="18,*" ColumnSpacing="6">
+                            <Path
+                                Data="M 9,1 A 8,8 0 1 0 9,17 A 8,8 0 1 0 9,1 M 15,15 L 21,21"
+                                Stroke="White"
+                                StrokeThickness="2"
+                                Fill="Transparent"
+                                WidthRequest="18"
+                                HeightRequest="18"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="1"
+                                Text="Rhinella dypticha"
+                                FontAttributes="Italic"
+                                TextColor="White"
+                                FontSize="11"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                    <Label
+                        Grid.Column="1"
+                        Text="ou"
+                        TextColor="White"
+                        FontFamily="RussoOne"
+                        FontSize="18"
+                        VerticalOptions="Center" />
+
+                    <Border
+                        Grid.Column="2"
+                        HeightRequest="44"
+                        Stroke="White"
+                        StrokeThickness="2"
+                        BackgroundColor="Transparent"
+                        StrokeShape="RoundRectangle 22"
+                        VerticalOptions="Center">
+                        <Grid Padding="12,0" ColumnDefinitions="18,*" ColumnSpacing="6">
+                            <Path
+                                Data="M 9,1 A 8,8 0 1 0 9,17 A 8,8 0 1 0 9,1 M 15,15 L 21,21"
+                                Stroke="White"
+                                StrokeThickness="2"
+                                Fill="Transparent"
+                                WidthRequest="18"
+                                HeightRequest="18"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="1"
+                                Text="Cururu"
+                                TextColor="White"
+                                FontSize="11"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+
+            <!-- Passo 3 -->
+            <Grid Margin="28,0,28,6" ColumnDefinitions="40,*" ColumnSpacing="14">
+                <Border
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    StrokeThickness="0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 20"
+                    VerticalOptions="Start">
+                    <Label
+                        Text="3"
+                        TextColor="#004E56"
+                        FontFamily="RussoOne"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Border>
+
+                <Border
+                    Grid.Column="1"
+                    HeightRequest="170"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 18">
+                    <Image Source="rhinella_dypticha.png" Aspect="AspectFill" />
+                </Border>
+            </Grid>
+
+            <Label Margin="0,10,0,34" HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Rhinella dypticha " TextColor="White" FontAttributes="Bold,Italic" />
+                        <Span Text="(Cope, 1862)" TextColor="White" FontAttributes="Bold" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <!-- ===================== Seção 2: Busca por família ===================== -->
+
+            <HorizontalStackLayout Margin="28,0,28,2" Spacing="8">
+                <Label Text="•" TextColor="White" FontSize="20" FontAttributes="Bold" />
+                <Label
+                    Text="Encontre uma espécie navegando pelas famílias"
+                    TextColor="White"
+                    FontFamily="OpenSansSemibold"
+                    FontSize="18"
+                    FontAttributes="Bold" />
+            </HorizontalStackLayout>
+
+            <Label
+                Margin="28,10,28,22"
+                TextColor="White"
+                FontSize="13"
+                Text="Explore as famílias disponíveis em ordem alfabética. Ao selecionar uma família, você poderá navegar pelos gêneros e espécies correspondentes." />
+
+            <!-- Passo 1: Famílias -->
+            <Grid Margin="28,0,28,10" ColumnDefinitions="40,*" ColumnSpacing="14">
+                <Border
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    StrokeThickness="0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 20">
+                    <Label
+                        Text="1"
+                        TextColor="#004E56"
+                        FontFamily="RussoOne"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Border>
+
+                <Label
+                    Grid.Column="1"
+                    Text="Famílias"
+                    TextColor="White"
+                    FontFamily="OpenSansSemibold"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Grid>
+
+            <Grid Margin="28,0,28,26" ColumnDefinitions="*,*" ColumnSpacing="16">
+                <Border
+                    Grid.Column="0"
+                    HeightRequest="100"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 20">
+                    <Grid>
+                        <Image Source="familia_aromobatidae.png" Aspect="AspectFill" />
+                        <Label
+                            Text="Arobomantidae"
+                            TextColor="White"
+                            FontSize="9"
+                            FontFamily="OpenSansSemibold"
+                            FontAttributes="Bold"
+                            VerticalOptions="End"
+                            HorizontalOptions="Center"
+                            Margin="4,0,4,8">
+                            <Label.Shadow>
+                                <Shadow Brush="Black" Opacity="1" Radius="3" Offset="1,1" />
+                            </Label.Shadow>
+                        </Label>
+                    </Grid>
+                </Border>
+
+                <Border
+                    Grid.Column="1"
+                    HeightRequest="100"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 20">
+                    <Grid>
+                        <Image Source="familia_bufonidae.png" Aspect="AspectFill" />
+                        <Label
+                            Text="Bufonidae"
+                            TextColor="White"
+                            FontSize="9"
+                            FontFamily="OpenSansSemibold"
+                            FontAttributes="Bold"
+                            VerticalOptions="End"
+                            HorizontalOptions="Center"
+                            Margin="4,0,4,8">
+                            <Label.Shadow>
+                                <Shadow Brush="Black" Opacity="1" Radius="3" Offset="1,1" />
+                            </Label.Shadow>
+                        </Label>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- Passo 2: Gêneros -->
+            <Grid Margin="28,0,28,14" ColumnDefinitions="40,*" ColumnSpacing="14">
+                <Border
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    StrokeThickness="0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 20">
+                    <Label
+                        Text="2"
+                        TextColor="#004E56"
+                        FontFamily="RussoOne"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Border>
+
+                <Label Grid.Column="1" TextColor="White" FontFamily="OpenSansSemibold" FontSize="16" VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Gênero: " TextColor="White" />
+                            <Span Text="Frostius" TextColor="White" FontAttributes="Bold,Italic" />
+                            <Span Text=" (1 sp.)" TextColor="White" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+
+            <Grid Margin="82,0,28,4" ColumnDefinitions="*,*" ColumnSpacing="16">
+                <Border
+                    Grid.Column="0"
+                    HeightRequest="90"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 18">
+                    <Image Source="frostius_sp.png" Aspect="AspectFill" />
+                </Border>
+            </Grid>
+
+            <Label
+                Margin="82,6,28,24"
+                TextColor="White"
+                FontSize="10"
+                HorizontalTextAlignment="Start">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Frostius pernambucensis" TextColor="White" FontAttributes="Bold,Italic" />
+                        <Span Text=" (Bokermann, 1962)" TextColor="White" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label
+                Margin="28,0,28,14"
+                TextColor="White"
+                FontFamily="OpenSansSemibold"
+                FontSize="16">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Gênero: " TextColor="White" />
+                        <Span Text="Rhinella" TextColor="White" FontAttributes="Bold,Italic" />
+                        <Span Text=" (4 spp.)" TextColor="White" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Grid Margin="28,0,28,10" ColumnDefinitions="*,*" ColumnSpacing="16" RowDefinitions="Auto,Auto" RowSpacing="8">
+                <Border Grid.Row="0" Grid.Column="0" HeightRequest="90" StrokeThickness="0" StrokeShape="RoundRectangle 18">
+                    <Image Source="rhinella_crucifer.png" Aspect="AspectFill" />
+                </Border>
+                <Border Grid.Row="0" Grid.Column="1" HeightRequest="90" StrokeThickness="0" StrokeShape="RoundRectangle 18">
+                    <Image Source="rhinella_granulosa.png" Aspect="AspectFill" />
+                </Border>
+                <Border Grid.Row="1" Grid.Column="0" HeightRequest="90" StrokeThickness="0" StrokeShape="RoundRectangle 18">
+                    <Image Source="rhinella_dypticha.png" Aspect="AspectFill" />
+                </Border>
+                <Border Grid.Row="1" Grid.Column="1" HeightRequest="90" StrokeThickness="0" StrokeShape="RoundRectangle 18">
+                    <Image Source="rhinella_hoogmoedi.png" Aspect="AspectFill" />
+                </Border>
+            </Grid>
+
+            <Grid Margin="28,4,28,32" ColumnDefinitions="*,*" ColumnSpacing="16">
+                <Label Grid.Column="0" TextColor="White" FontSize="9" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Rhinella crucifer" TextColor="White" FontAttributes="Bold,Italic" />
+                            <Span Text=" (Wied-Neuwied, 1821)" TextColor="White" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Grid.Column="1" TextColor="White" FontSize="9" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Rhinella granulosa" TextColor="White" FontAttributes="Bold,Italic" />
+                            <Span Text=" (Spix, 1824)" TextColor="White" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+
+            <Grid Margin="28,-24,28,34" ColumnDefinitions="*,*" ColumnSpacing="16">
+                <Label Grid.Column="0" TextColor="White" FontSize="9" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Rhinella dypticha" TextColor="White" FontAttributes="Bold,Italic" />
+                            <Span Text=" (Cope, 1862)" TextColor="White" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Grid.Column="1" TextColor="White" FontSize="9" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Rhinella hoogmoedi " TextColor="White" FontAttributes="Bold,Italic" />
+                            <Span Text="Caramaschi and Pombal, 2006" TextColor="White" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+
+            <!-- ===================== Seções 3 e 4: Conheça a espécie / Morfologia e cantos ===================== -->
+            <!-- Reproduzidas como imagens fixas (guia3.png / guia4.png) para evitar problemas de layout em telas estreitas -->
+
+            <Image Source="guia3.png" Aspect="AspectFit" HorizontalOptions="Fill" />
+            <Image Source="guia4.png" Aspect="AspectFit" HorizontalOptions="Fill" />
+
+            <BoxView HeightRequest="40" Color="#004E56" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

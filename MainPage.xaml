@@ -162,6 +162,9 @@
                     Style="{StaticResource CoaxarButtonText}"
                     HorizontalOptions="Center"
                     VerticalOptions="Center" />
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnGuiaDeUsoTapped" />
+                </Border.GestureRecognizers>
             </Border>
 
             <!-- Rodapé -->
