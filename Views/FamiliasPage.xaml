@@ -10,51 +10,43 @@
 
     <CollectionView
         x:Name="FamiliasCollection"
-        Margin="28,0"
+        Margin="40,0"
         SelectionMode="Single"
         SelectionChanged="OnFamiliaSelected">
 
         <CollectionView.Header>
-            <VerticalStackLayout Padding="0,36,0,0">
+            <VerticalStackLayout Padding="0,14,0,0">
 
                 <Image
                     Source="logo_coaxar.png"
-                    WidthRequest="104"
-                    HeightRequest="104"
+                    WidthRequest="64"
+                    HeightRequest="64"
                     HorizontalOptions="Center"
                     Aspect="AspectFit" />
 
                 <!-- Busca pronta para receber resultados do repositório/SQLite -->
                 <Border
-                    HeightRequest="54"
+                    HeightRequest="44"
                     Stroke="White"
-                    StrokeThickness="3"
+                    StrokeThickness="2"
                     BackgroundColor="Transparent"
-                    StrokeShape="RoundRectangle 27"
-                    Margin="0,24,0,0">
+                    StrokeShape="RoundRectangle 22"
+                    Margin="0,16,0,0">
 
                     <Grid
-                        Padding="18,0"
-                        ColumnDefinitions="34,*"
-                        ColumnSpacing="12">
+                        Padding="14,0"
+                        ColumnDefinitions="22,*"
+                        ColumnSpacing="9">
 
-                        <Ellipse
-                            WidthRequest="25"
-                            HeightRequest="25"
+                        <Path
+                            Data="M 9,1 A 8,8 0 1 0 9,17 A 8,8 0 1 0 9,1 M 15,15 L 21,21"
                             Stroke="White"
                             StrokeThickness="2"
                             Fill="Transparent"
+                            WidthRequest="22"
+                            HeightRequest="22"
+                            HorizontalOptions="Center"
                             VerticalOptions="Center" />
-
-                        <BoxView
-                            WidthRequest="14"
-                            HeightRequest="2"
-                            Color="White"
-                            Rotation="45"
-                            TranslationX="19"
-                            TranslationY="13"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Start" />
 
                         <Entry
                             x:Name="BuscaEntry"
@@ -62,7 +54,8 @@
                             Placeholder="Encontre as espécies pelo nome"
                             PlaceholderColor="White"
                             TextColor="White"
-                            FontSize="16"
+                            FontSize="12"
+                            MinimumHeightRequest="36"
                             VerticalOptions="Center"
                             TextChanged="OnBuscaTextChanged" />
 
@@ -71,9 +64,11 @@
 
                 <Label
                     Text="Famílias"
-                    Style="{StaticResource CoaxarTitle}"
+                    TextColor="White"
+                    FontFamily="OpenSansSemibold"
+                    FontSize="18"
                     HorizontalOptions="Center"
-                    Margin="0,24,0,24" />
+                    Margin="0,14,0,12" />
 
             </VerticalStackLayout>
         </CollectionView.Header>
@@ -82,33 +77,42 @@
             <GridItemsLayout
                 Orientation="Vertical"
                 Span="2"
-                HorizontalItemSpacing="18"
-                VerticalItemSpacing="24" />
+                HorizontalItemSpacing="38"
+                VerticalItemSpacing="14" />
         </CollectionView.ItemsLayout>
 
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="models:FamiliaModel">
                 <Border
-                    HeightRequest="150"
+                    HeightRequest="110"
                     StrokeThickness="0"
-                    StrokeShape="RoundRectangle 28">
+                    StrokeShape="RoundRectangle 22">
 
                     <Grid>
-                        <Image Source="{Binding ImagemPath}" Aspect="AspectFill" />
-                        <BoxView
-                            VerticalOptions="End"
-                            HeightRequest="70"
-                            Color="Black"
-                            Opacity="0.48" />
+                        <Image
+                            Source="{Binding ImagemPath}"
+                            Aspect="AspectFill"
+                            HeightRequest="110"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill" />
                         <Label
                             Text="{Binding Nome}"
                             TextColor="White"
-                            FontSize="14"
-                            FontFamily="RussoOne"
+                            FontSize="10"
+                            FontFamily="OpenSansSemibold"
                             FontAttributes="Bold"
                             VerticalOptions="End"
                             HorizontalOptions="Center"
-                            Margin="4,0,4,14" />
+                            HorizontalTextAlignment="Center"
+                            Margin="4,0,4,10">
+                            <Label.Shadow>
+                                <Shadow
+                                    Brush="Black"
+                                    Opacity="1"
+                                    Radius="3"
+                                    Offset="1,1" />
+                            </Label.Shadow>
+                        </Label>
                     </Grid>
                 </Border>
             </DataTemplate>

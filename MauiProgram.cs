@@ -16,6 +16,17 @@ public static class MauiProgram
 				fonts.AddFont("RussoOne-Regular.ttf", "RussoOne");
 			});
 
+#if ANDROID
+		Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(
+			"RemoveUnderline",
+			(handler, _) =>
+			{
+				handler.PlatformView.BackgroundTintList =
+					Android.Content.Res.ColorStateList.ValueOf(
+						Android.Graphics.Color.Transparent);
+			});
+#endif
+
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
