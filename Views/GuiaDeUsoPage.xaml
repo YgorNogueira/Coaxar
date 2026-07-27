@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     BackgroundColor="#004550"
+    BackgroundImageSource="lehp_texture.png"
     Shell.NavBarIsVisible="False">
 
     <ScrollView>
@@ -11,163 +12,163 @@
 
             <!-- Topo: menu + logos -->
             <Grid
-                Padding="28,42,28,0"
+                Padding="{StaticResource CoaxarHeaderPadding}"
                 ColumnDefinitions="Auto,*,Auto">
 
                 <Border
-                    WidthRequest="46"
-                    HeightRequest="46"
+                    WidthRequest="{StaticResource CoaxarMenuSize}"
+                    HeightRequest="{StaticResource CoaxarMenuSize}"
                     Stroke="White"
-                    StrokeThickness="3"
+                    StrokeThickness="2.5"
                     BackgroundColor="Transparent"
-                    StrokeShape="RoundRectangle 23">
+                    StrokeShape="RoundRectangle 19">
                     <VerticalStackLayout
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
-                        Spacing="5">
-                        <BoxView WidthRequest="28" HeightRequest="4" CornerRadius="2" Color="White" />
-                        <BoxView WidthRequest="28" HeightRequest="4" CornerRadius="2" Color="White" />
-                        <BoxView WidthRequest="28" HeightRequest="4" CornerRadius="2" Color="White" />
+                        Spacing="{StaticResource CoaxarMenuLineSpacing}">
+                        <BoxView WidthRequest="{StaticResource CoaxarMenuLineWidth}" HeightRequest="{StaticResource CoaxarMenuLineHeight}" CornerRadius="2" Color="White" />
+                        <BoxView WidthRequest="{StaticResource CoaxarMenuLineWidth}" HeightRequest="{StaticResource CoaxarMenuLineHeight}" CornerRadius="2" Color="White" />
+                        <BoxView WidthRequest="{StaticResource CoaxarMenuLineWidth}" HeightRequest="{StaticResource CoaxarMenuLineHeight}" CornerRadius="2" Color="White" />
                     </VerticalStackLayout>
                 </Border>
 
                 <HorizontalStackLayout
                     Grid.Column="2"
-                    Spacing="14"
+                    Spacing="{StaticResource CoaxarTopSpacing}"
                     VerticalOptions="Start">
-                    <Image Source="logo_ufrpe.png" WidthRequest="40" HeightRequest="48" Aspect="AspectFit" />
-                    <Image Source="logo_lehp.png" WidthRequest="70" HeightRequest="48" Aspect="AspectFit" />
+                    <Image Source="logo_ufrpe.png" WidthRequest="{StaticResource CoaxarTopLogoUfrpeWidth}" HeightRequest="{StaticResource CoaxarTopLogoHeight}" Aspect="AspectFit" />
+                    <Image Source="logo_lehp.png" WidthRequest="{StaticResource CoaxarTopLogoLehpWidth}" HeightRequest="{StaticResource CoaxarTopLogoHeight}" Aspect="AspectFit" />
                 </HorizontalStackLayout>
             </Grid>
 
             <!-- Logo principal -->
             <Image
                 Source="logo_coaxar.png"
-                WidthRequest="150"
-                HeightRequest="150"
+                WidthRequest="{StaticResource CoaxarMainLogoSize}"
+                HeightRequest="{StaticResource CoaxarMainLogoSize}"
                 HorizontalOptions="Center"
-                Margin="0,6,0,26"
+                Margin="{StaticResource CoaxarGuideLogoMargin}"
                 Aspect="AspectFit" />
 
             <!-- Título -->
             <Border
-                HeightRequest="80"
+                HeightRequest="{StaticResource CoaxarTitleCardHeight}"
                 StrokeThickness="0"
                 BackgroundColor="White"
-                StrokeShape="RoundRectangle 28"
-                Margin="28,0,28,26">
+                StrokeShape="RoundRectangle 23"
+                Margin="{StaticResource CoaxarGuideTitleMargin}">
                 <Label
                     Text="Guia de Uso"
                     Style="{StaticResource CoaxarButtonText}"
-                    FontSize="24"
+                    FontSize="{StaticResource CoaxarFontTitle}"
                     HorizontalOptions="Center"
                     VerticalOptions="Center" />
             </Border>
 
             <!-- Texto introdutório -->
             <Label
-                Margin="28,0,28,32"
+                Margin="{StaticResource CoaxarParagraphMargin}"
                 TextColor="White"
-                FontSize="14"
+                FontSize="{StaticResource CoaxarFontBodyLarge}"
                 LineHeight="1.3"
                 Text="A Sonoteca Coaxar é uma plataforma de acesso público, disponível para toda a população. Por meio dela, estudantes, professores, pesquisadores e demais interessados podem conhecer os anfíbios anuros de Pernambuco, consultar informações sobre as espécies e ouvir suas vocalizações. A plataforma também pode ser utilizada como recurso de apoio em aulas, atividades de campo, ações de educação ambiental e outras práticas educativas. Descubra como explorar todas as suas funcionalidades abaixo." />
 
             <!-- ===================== Seção 1: Busca por nome ===================== -->
 
-            <HorizontalStackLayout Margin="28,0,28,2" Spacing="8">
-                <Label Text="•" TextColor="White" FontSize="20" FontAttributes="Bold" />
+            <HorizontalStackLayout Margin="{StaticResource CoaxarSectionMargin}" Spacing="7">
+                <Label Text="•" TextColor="White" FontSize="{StaticResource CoaxarFontButton}" FontAttributes="Bold" />
                 <Label
                     Text="Encontre uma espécie pelo nome"
                     TextColor="White"
                     FontFamily="OpenSansSemibold"
-                    FontSize="18"
+                    FontSize="{StaticResource CoaxarFontSection}"
                     FontAttributes="Bold" />
             </HorizontalStackLayout>
 
             <Label
-                Margin="28,10,28,22"
+                Margin="{StaticResource CoaxarInstructionMargin}"
                 TextColor="White"
-                FontSize="13"
+                FontSize="{StaticResource CoaxarFontBody}"
                 Text="Digite o nome comum ou científico da espécie na barra de busca." />
 
             <!-- Passo 1 -->
-            <Grid Margin="28,0,28,18" ColumnDefinitions="40,*" ColumnSpacing="14">
+            <Grid Margin="{StaticResource CoaxarGuideStepMargin}" ColumnDefinitions="33,*" ColumnSpacing="12">
                 <Border
-                    WidthRequest="40"
-                    HeightRequest="40"
+                    WidthRequest="{StaticResource CoaxarStepBadgeSize}"
+                    HeightRequest="{StaticResource CoaxarStepBadgeSize}"
                     StrokeThickness="0"
                     BackgroundColor="White"
-                    StrokeShape="RoundRectangle 20">
+                    StrokeShape="RoundRectangle 16">
                     <Label
                         Text="1"
                         TextColor="#004E56"
                         FontFamily="RussoOne"
-                        FontSize="18"
+                        FontSize="{StaticResource CoaxarFontSection}"
                         HorizontalOptions="Center"
                         VerticalOptions="Center" />
                 </Border>
 
                 <Border
                     Grid.Column="1"
-                    HeightRequest="44"
+                    HeightRequest="{StaticResource CoaxarGuideSearchHeight}"
                     Stroke="White"
                     StrokeThickness="2"
                     BackgroundColor="Transparent"
-                    StrokeShape="RoundRectangle 22"
+                    StrokeShape="RoundRectangle 18"
                     VerticalOptions="Center">
-                    <Grid Padding="14,0" ColumnDefinitions="22,*" ColumnSpacing="9">
+                    <Grid Padding="{StaticResource CoaxarSearchGridPadding}" ColumnDefinitions="18,*" ColumnSpacing="7">
                         <Path
                             Data="M 9,1 A 8,8 0 1 0 9,17 A 8,8 0 1 0 9,1 M 15,15 L 21,21"
                             Stroke="White"
                             StrokeThickness="2"
                             Fill="Transparent"
-                            WidthRequest="22"
-                            HeightRequest="22"
+                            WidthRequest="18"
+                            HeightRequest="18"
                             HorizontalOptions="Center"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="1"
                             Text="Encontre as espécies pelo nome"
                             TextColor="White"
-                            FontSize="12"
+                            FontSize="{StaticResource CoaxarFontSmall}"
                             VerticalOptions="Center" />
                     </Grid>
                 </Border>
             </Grid>
 
             <!-- Passo 2 -->
-            <Grid Margin="28,0,28,18" ColumnDefinitions="40,*" ColumnSpacing="14">
+            <Grid Margin="{StaticResource CoaxarGuideStepMargin}" ColumnDefinitions="33,*" ColumnSpacing="12">
                 <Border
-                    WidthRequest="40"
-                    HeightRequest="40"
+                    WidthRequest="{StaticResource CoaxarStepBadgeSize}"
+                    HeightRequest="{StaticResource CoaxarStepBadgeSize}"
                     StrokeThickness="0"
                     BackgroundColor="White"
-                    StrokeShape="RoundRectangle 20">
+                    StrokeShape="RoundRectangle 16">
                     <Label
                         Text="2"
                         TextColor="#004E56"
                         FontFamily="RussoOne"
-                        FontSize="18"
+                        FontSize="{StaticResource CoaxarFontSection}"
                         HorizontalOptions="Center"
                         VerticalOptions="Center" />
                 </Border>
 
-                <Grid Grid.Column="1" ColumnDefinitions="*,Auto,*" ColumnSpacing="10">
+                <Grid Grid.Column="1" ColumnDefinitions="*,Auto,*" ColumnSpacing="8">
                     <Border
-                        HeightRequest="44"
+                        HeightRequest="{StaticResource CoaxarGuideSearchHeight}"
                         Stroke="White"
                         StrokeThickness="2"
                         BackgroundColor="Transparent"
-                        StrokeShape="RoundRectangle 22"
+                        StrokeShape="RoundRectangle 18"
                         VerticalOptions="Center">
-                        <Grid Padding="12,0" ColumnDefinitions="18,*" ColumnSpacing="6">
+                        <Grid Padding="{StaticResource CoaxarSearchSmallGridPadding}" ColumnDefinitions="15,*" ColumnSpacing="{StaticResource CoaxarSearchSmallColumnSpacing}">
                             <Path
                                 Data="M 9,1 A 8,8 0 1 0 9,17 A 8,8 0 1 0 9,1 M 15,15 L 21,21"
                                 Stroke="White"
                                 StrokeThickness="2"
                                 Fill="Transparent"
-                                WidthRequest="18"
-                                HeightRequest="18"
+                                WidthRequest="{StaticResource CoaxarSearchSmallIconSize}"
+                                HeightRequest="{StaticResource CoaxarSearchSmallIconSize}"
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center" />
                             <Label
@@ -175,7 +176,7 @@
                                 Text="Rhinella dypticha"
                                 FontAttributes="Italic"
                                 TextColor="White"
-                                FontSize="11"
+                                FontSize="{StaticResource CoaxarFontCaption}"
                                 VerticalOptions="Center" />
                         </Grid>
                     </Border>
@@ -185,32 +186,32 @@
                         Text="ou"
                         TextColor="White"
                         FontFamily="RussoOne"
-                        FontSize="18"
+                        FontSize="{StaticResource CoaxarFontSection}"
                         VerticalOptions="Center" />
 
                     <Border
                         Grid.Column="2"
-                        HeightRequest="44"
+                        HeightRequest="{StaticResource CoaxarGuideSearchHeight}"
                         Stroke="White"
                         StrokeThickness="2"
                         BackgroundColor="Transparent"
-                        StrokeShape="RoundRectangle 22"
+                        StrokeShape="RoundRectangle 18"
                         VerticalOptions="Center">
-                        <Grid Padding="12,0" ColumnDefinitions="18,*" ColumnSpacing="6">
+                        <Grid Padding="{StaticResource CoaxarSearchSmallGridPadding}" ColumnDefinitions="15,*" ColumnSpacing="{StaticResource CoaxarSearchSmallColumnSpacing}">
                             <Path
                                 Data="M 9,1 A 8,8 0 1 0 9,17 A 8,8 0 1 0 9,1 M 15,15 L 21,21"
                                 Stroke="White"
                                 StrokeThickness="2"
                                 Fill="Transparent"
-                                WidthRequest="18"
-                                HeightRequest="18"
+                                WidthRequest="{StaticResource CoaxarSearchSmallIconSize}"
+                                HeightRequest="{StaticResource CoaxarSearchSmallIconSize}"
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center" />
                             <Label
                                 Grid.Column="1"
                                 Text="Cururu"
                                 TextColor="White"
-                                FontSize="11"
+                                FontSize="{StaticResource CoaxarFontCaption}"
                                 VerticalOptions="Center" />
                         </Grid>
                     </Border>
@@ -218,33 +219,33 @@
             </Grid>
 
             <!-- Passo 3 -->
-            <Grid Margin="28,0,28,6" ColumnDefinitions="40,*" ColumnSpacing="14">
+            <Grid Margin="{StaticResource CoaxarGuideStepTightMargin}" ColumnDefinitions="33,*" ColumnSpacing="12">
                 <Border
-                    WidthRequest="40"
-                    HeightRequest="40"
+                    WidthRequest="{StaticResource CoaxarStepBadgeSize}"
+                    HeightRequest="{StaticResource CoaxarStepBadgeSize}"
                     StrokeThickness="0"
                     BackgroundColor="White"
-                    StrokeShape="RoundRectangle 20"
+                    StrokeShape="RoundRectangle 16"
                     VerticalOptions="Start">
                     <Label
                         Text="3"
                         TextColor="#004E56"
                         FontFamily="RussoOne"
-                        FontSize="18"
+                        FontSize="{StaticResource CoaxarFontSection}"
                         HorizontalOptions="Center"
                         VerticalOptions="Center" />
                 </Border>
 
                 <Border
                     Grid.Column="1"
-                    HeightRequest="170"
+                    HeightRequest="{StaticResource CoaxarGuideSelectedCardHeight}"
                     StrokeThickness="0"
-                    StrokeShape="RoundRectangle 18">
+                    StrokeShape="RoundRectangle 15">
                     <Image Source="rhinella_dypticha.png" Aspect="AspectFill" />
                 </Border>
             </Grid>
 
-            <Label Margin="0,10,0,34" HorizontalOptions="Center">
+            <Label Margin="0,8,0,28" FontSize="{StaticResource CoaxarFontBody}" HorizontalOptions="Center">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Rhinella dypticha " TextColor="White" FontAttributes="Bold,Italic" />
@@ -255,35 +256,35 @@
 
             <!-- ===================== Seção 2: Busca por família ===================== -->
 
-            <HorizontalStackLayout Margin="28,0,28,2" Spacing="8">
-                <Label Text="•" TextColor="White" FontSize="20" FontAttributes="Bold" />
+            <HorizontalStackLayout Margin="{StaticResource CoaxarSectionMargin}" Spacing="7">
+                <Label Text="•" TextColor="White" FontSize="{StaticResource CoaxarFontButton}" FontAttributes="Bold" />
                 <Label
                     Text="Encontre uma espécie navegando pelas famílias"
                     TextColor="White"
                     FontFamily="OpenSansSemibold"
-                    FontSize="18"
+                    FontSize="{StaticResource CoaxarFontSection}"
                     FontAttributes="Bold" />
             </HorizontalStackLayout>
 
             <Label
-                Margin="28,10,28,22"
+                Margin="{StaticResource CoaxarInstructionMargin}"
                 TextColor="White"
-                FontSize="13"
+                FontSize="{StaticResource CoaxarFontBody}"
                 Text="Explore as famílias disponíveis em ordem alfabética. Ao selecionar uma família, você poderá navegar pelos gêneros e espécies correspondentes." />
 
             <!-- Passo 1: Famílias -->
-            <Grid Margin="28,0,28,10" ColumnDefinitions="40,*" ColumnSpacing="14">
+            <Grid Margin="{StaticResource CoaxarGuideStepTightMargin}" ColumnDefinitions="33,*" ColumnSpacing="12">
                 <Border
-                    WidthRequest="40"
-                    HeightRequest="40"
+                    WidthRequest="{StaticResource CoaxarStepBadgeSize}"
+                    HeightRequest="{StaticResource CoaxarStepBadgeSize}"
                     StrokeThickness="0"
                     BackgroundColor="White"
-                    StrokeShape="RoundRectangle 20">
+                    StrokeShape="RoundRectangle 16">
                     <Label
                         Text="1"
                         TextColor="#004E56"
                         FontFamily="RussoOne"
-                        FontSize="18"
+                        FontSize="{StaticResource CoaxarFontSection}"
                         HorizontalOptions="Center"
                         VerticalOptions="Center" />
                 </Border>
@@ -293,28 +294,28 @@
                     Text="Famílias"
                     TextColor="White"
                     FontFamily="OpenSansSemibold"
-                    FontSize="18"
+                    FontSize="{StaticResource CoaxarFontSection}"
                     HorizontalOptions="Center"
                     VerticalOptions="Center" />
             </Grid>
 
-            <Grid Margin="28,0,28,26" ColumnDefinitions="*,*" ColumnSpacing="16">
+            <Grid Margin="{StaticResource CoaxarGuideCardGridMargin}" ColumnDefinitions="*,*" ColumnSpacing="13">
                 <Border
                     Grid.Column="0"
-                    HeightRequest="100"
+                    HeightRequest="{StaticResource CoaxarGuideFamilyCardHeight}"
                     StrokeThickness="0"
-                    StrokeShape="RoundRectangle 20">
+                    StrokeShape="RoundRectangle 16">
                     <Grid>
                         <Image Source="familia_aromobatidae.png" Aspect="AspectFill" />
                         <Label
                             Text="Arobomantidae"
                             TextColor="White"
-                            FontSize="9"
+                            FontSize="{StaticResource CoaxarFontTiny}"
                             FontFamily="OpenSansSemibold"
                             FontAttributes="Bold"
                             VerticalOptions="End"
                             HorizontalOptions="Center"
-                            Margin="4,0,4,8">
+                            Margin="3,0,3,7">
                             <Label.Shadow>
                                 <Shadow Brush="Black" Opacity="1" Radius="3" Offset="1,1" />
                             </Label.Shadow>
@@ -324,20 +325,20 @@
 
                 <Border
                     Grid.Column="1"
-                    HeightRequest="100"
+                    HeightRequest="{StaticResource CoaxarGuideFamilyCardHeight}"
                     StrokeThickness="0"
-                    StrokeShape="RoundRectangle 20">
+                    StrokeShape="RoundRectangle 16">
                     <Grid>
                         <Image Source="familia_bufonidae.png" Aspect="AspectFill" />
                         <Label
                             Text="Bufonidae"
                             TextColor="White"
-                            FontSize="9"
+                            FontSize="{StaticResource CoaxarFontTiny}"
                             FontFamily="OpenSansSemibold"
                             FontAttributes="Bold"
                             VerticalOptions="End"
                             HorizontalOptions="Center"
-                            Margin="4,0,4,8">
+                            Margin="3,0,3,7">
                             <Label.Shadow>
                                 <Shadow Brush="Black" Opacity="1" Radius="3" Offset="1,1" />
                             </Label.Shadow>
@@ -347,23 +348,23 @@
             </Grid>
 
             <!-- Passo 2: Gêneros -->
-            <Grid Margin="28,0,28,14" ColumnDefinitions="40,*" ColumnSpacing="14">
+            <Grid Margin="{StaticResource CoaxarGuideStepMargin}" ColumnDefinitions="33,*" ColumnSpacing="12">
                 <Border
-                    WidthRequest="40"
-                    HeightRequest="40"
+                    WidthRequest="{StaticResource CoaxarStepBadgeSize}"
+                    HeightRequest="{StaticResource CoaxarStepBadgeSize}"
                     StrokeThickness="0"
                     BackgroundColor="White"
-                    StrokeShape="RoundRectangle 20">
+                    StrokeShape="RoundRectangle 16">
                     <Label
                         Text="2"
                         TextColor="#004E56"
                         FontFamily="RussoOne"
-                        FontSize="18"
+                        FontSize="{StaticResource CoaxarFontSection}"
                         HorizontalOptions="Center"
                         VerticalOptions="Center" />
                 </Border>
 
-                <Label Grid.Column="1" TextColor="White" FontFamily="OpenSansSemibold" FontSize="16" VerticalOptions="Center">
+                <Label Grid.Column="1" TextColor="White" FontFamily="OpenSansSemibold" FontSize="{StaticResource CoaxarFontBodyLarge}" VerticalOptions="Center">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="Gênero: " TextColor="White" />
@@ -374,20 +375,20 @@
                 </Label>
             </Grid>
 
-            <Grid Margin="82,0,28,4" ColumnDefinitions="*,*" ColumnSpacing="16">
+            <Grid Margin="{StaticResource CoaxarGuideInsetCardMargin}" ColumnDefinitions="*,*" ColumnSpacing="13">
                 <Border
                     Grid.Column="0"
-                    HeightRequest="90"
+                    HeightRequest="{StaticResource CoaxarGuideSpeciesCardHeight}"
                     StrokeThickness="0"
-                    StrokeShape="RoundRectangle 18">
+                    StrokeShape="RoundRectangle 15">
                     <Image Source="frostius_sp.png" Aspect="AspectFill" />
                 </Border>
             </Grid>
 
             <Label
-                Margin="82,6,28,24"
+                Margin="{StaticResource CoaxarGuideInsetLabelMargin}"
                 TextColor="White"
-                FontSize="10"
+                FontSize="{StaticResource CoaxarFontCaption}"
                 HorizontalTextAlignment="Start">
                 <Label.FormattedText>
                     <FormattedString>
@@ -398,10 +399,10 @@
             </Label>
 
             <Label
-                Margin="28,0,28,14"
+                Margin="23,0,23,12"
                 TextColor="White"
                 FontFamily="OpenSansSemibold"
-                FontSize="16">
+                FontSize="{StaticResource CoaxarFontBodyLarge}">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Gênero: " TextColor="White" />
@@ -411,23 +412,23 @@
                 </Label.FormattedText>
             </Label>
 
-            <Grid Margin="28,0,28,10" ColumnDefinitions="*,*" ColumnSpacing="16" RowDefinitions="Auto,Auto" RowSpacing="8">
-                <Border Grid.Row="0" Grid.Column="0" HeightRequest="90" StrokeThickness="0" StrokeShape="RoundRectangle 18">
+            <Grid Margin="23,0,23,8" ColumnDefinitions="*,*" ColumnSpacing="13" RowDefinitions="Auto,Auto" RowSpacing="7">
+                <Border Grid.Row="0" Grid.Column="0" HeightRequest="{StaticResource CoaxarGuideSpeciesCardHeight}" StrokeThickness="0" StrokeShape="RoundRectangle 15">
                     <Image Source="rhinella_crucifer.png" Aspect="AspectFill" />
                 </Border>
-                <Border Grid.Row="0" Grid.Column="1" HeightRequest="90" StrokeThickness="0" StrokeShape="RoundRectangle 18">
+                <Border Grid.Row="0" Grid.Column="1" HeightRequest="{StaticResource CoaxarGuideSpeciesCardHeight}" StrokeThickness="0" StrokeShape="RoundRectangle 15">
                     <Image Source="rhinella_granulosa.png" Aspect="AspectFill" />
                 </Border>
-                <Border Grid.Row="1" Grid.Column="0" HeightRequest="90" StrokeThickness="0" StrokeShape="RoundRectangle 18">
+                <Border Grid.Row="1" Grid.Column="0" HeightRequest="{StaticResource CoaxarGuideSpeciesCardHeight}" StrokeThickness="0" StrokeShape="RoundRectangle 15">
                     <Image Source="rhinella_dypticha.png" Aspect="AspectFill" />
                 </Border>
-                <Border Grid.Row="1" Grid.Column="1" HeightRequest="90" StrokeThickness="0" StrokeShape="RoundRectangle 18">
+                <Border Grid.Row="1" Grid.Column="1" HeightRequest="{StaticResource CoaxarGuideSpeciesCardHeight}" StrokeThickness="0" StrokeShape="RoundRectangle 15">
                     <Image Source="rhinella_hoogmoedi.png" Aspect="AspectFill" />
                 </Border>
             </Grid>
 
-            <Grid Margin="28,4,28,32" ColumnDefinitions="*,*" ColumnSpacing="16">
-                <Label Grid.Column="0" TextColor="White" FontSize="9" HorizontalTextAlignment="Center">
+            <Grid Margin="23,3,23,26" ColumnDefinitions="*,*" ColumnSpacing="13">
+                <Label Grid.Column="0" TextColor="White" FontSize="{StaticResource CoaxarFontTiny}" HorizontalTextAlignment="Center">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="Rhinella crucifer" TextColor="White" FontAttributes="Bold,Italic" />
@@ -435,7 +436,7 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label Grid.Column="1" TextColor="White" FontSize="9" HorizontalTextAlignment="Center">
+                <Label Grid.Column="1" TextColor="White" FontSize="{StaticResource CoaxarFontTiny}" HorizontalTextAlignment="Center">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="Rhinella granulosa" TextColor="White" FontAttributes="Bold,Italic" />
@@ -445,8 +446,8 @@
                 </Label>
             </Grid>
 
-            <Grid Margin="28,-24,28,34" ColumnDefinitions="*,*" ColumnSpacing="16">
-                <Label Grid.Column="0" TextColor="White" FontSize="9" HorizontalTextAlignment="Center">
+            <Grid Margin="{StaticResource CoaxarGuideBottomMargin}" ColumnDefinitions="*,*" ColumnSpacing="13">
+                <Label Grid.Column="0" TextColor="White" FontSize="{StaticResource CoaxarFontTiny}" HorizontalTextAlignment="Center">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="Rhinella dypticha" TextColor="White" FontAttributes="Bold,Italic" />
@@ -454,7 +455,7 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label Grid.Column="1" TextColor="White" FontSize="9" HorizontalTextAlignment="Center">
+                <Label Grid.Column="1" TextColor="White" FontSize="{StaticResource CoaxarFontTiny}" HorizontalTextAlignment="Center">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="Rhinella hoogmoedi " TextColor="White" FontAttributes="Bold,Italic" />
@@ -470,7 +471,7 @@
             <Image Source="guia3.png" Aspect="AspectFit" HorizontalOptions="Fill" />
             <Image Source="guia4.png" Aspect="AspectFit" HorizontalOptions="Fill" />
 
-            <BoxView HeightRequest="40" Color="#004E56" />
+            <BoxView HeightRequest="{StaticResource CoaxarDetailSeparatorHeight}" Color="#004E56" />
 
         </VerticalStackLayout>
     </ScrollView>

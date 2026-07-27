@@ -10,41 +10,41 @@
 
     <CollectionView
         x:Name="FamiliasCollection"
-        Margin="40,0"
+        Margin="{StaticResource CoaxarListMargin}"
         SelectionMode="Single"
         SelectionChanged="OnFamiliaSelected">
 
         <CollectionView.Header>
-            <VerticalStackLayout Padding="0,14,0,0">
+            <VerticalStackLayout Padding="{StaticResource CoaxarListHeaderPadding}">
 
                 <Image
                     Source="logo_coaxar.png"
-                    WidthRequest="64"
-                    HeightRequest="64"
+                    WidthRequest="{StaticResource CoaxarListLogoSize}"
+                    HeightRequest="{StaticResource CoaxarListLogoSize}"
                     HorizontalOptions="Center"
                     Aspect="AspectFit" />
 
                 <!-- Busca pronta para receber resultados do repositório/SQLite -->
                 <Border
-                    HeightRequest="44"
+                    HeightRequest="{StaticResource CoaxarSearchHeight}"
                     Stroke="White"
-                    StrokeThickness="2"
+                    StrokeThickness="2.5"
                     BackgroundColor="Transparent"
                     StrokeShape="RoundRectangle 22"
-                    Margin="0,16,0,0">
+                    Margin="{StaticResource CoaxarSearchMargin}">
 
                     <Grid
-                        Padding="14,0"
+                        Padding="{StaticResource CoaxarSearchGridPadding}"
                         ColumnDefinitions="22,*"
-                        ColumnSpacing="9">
+                        ColumnSpacing="{StaticResource CoaxarSearchColumnSpacing}">
 
                         <Path
                             Data="M 9,1 A 8,8 0 1 0 9,17 A 8,8 0 1 0 9,1 M 15,15 L 21,21"
                             Stroke="White"
                             StrokeThickness="2"
                             Fill="Transparent"
-                            WidthRequest="22"
-                            HeightRequest="22"
+                            WidthRequest="{StaticResource CoaxarSearchIconSize}"
+                            HeightRequest="{StaticResource CoaxarSearchIconSize}"
                             HorizontalOptions="Center"
                             VerticalOptions="Center" />
 
@@ -54,8 +54,8 @@
                             Placeholder="Encontre as espécies pelo nome"
                             PlaceholderColor="White"
                             TextColor="White"
-                            FontSize="12"
-                            MinimumHeightRequest="36"
+                            FontSize="{StaticResource CoaxarFontButton}"
+                            MinimumHeightRequest="{StaticResource CoaxarSearchEntryMinHeight}"
                             VerticalOptions="Center"
                             TextChanged="OnBuscaTextChanged" />
 
@@ -66,9 +66,9 @@
                     Text="Famílias"
                     TextColor="White"
                     FontFamily="OpenSansSemibold"
-                    FontSize="18"
+                    FontSize="{StaticResource CoaxarFontTitle}"
                     HorizontalOptions="Center"
-                    Margin="0,14,0,12" />
+                    Margin="{StaticResource CoaxarListTitleMargin}" />
 
             </VerticalStackLayout>
         </CollectionView.Header>
@@ -77,34 +77,34 @@
             <GridItemsLayout
                 Orientation="Vertical"
                 Span="2"
-                HorizontalItemSpacing="38"
-                VerticalItemSpacing="14" />
+                HorizontalItemSpacing="{StaticResource CoaxarListHorizontalSpacing}"
+                VerticalItemSpacing="{StaticResource CoaxarListVerticalSpacing}" />
         </CollectionView.ItemsLayout>
 
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="models:FamiliaModel">
                 <Border
-                    HeightRequest="110"
+                    HeightRequest="{StaticResource CoaxarFamilyCardHeight}"
                     StrokeThickness="0"
-                    StrokeShape="RoundRectangle 22">
+                    StrokeShape="RoundRectangle 23">
 
                     <Grid>
                         <Image
                             Source="{Binding ImagemPath}"
                             Aspect="AspectFill"
-                            HeightRequest="110"
+                            HeightRequest="{StaticResource CoaxarFamilyCardHeight}"
                             HorizontalOptions="Fill"
                             VerticalOptions="Fill" />
                         <Label
                             Text="{Binding Nome}"
                             TextColor="White"
-                            FontSize="10"
+                            FontSize="{StaticResource CoaxarFontBodyLarge}"
                             FontFamily="OpenSansSemibold"
                             FontAttributes="Bold"
                             VerticalOptions="End"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
-                            Margin="4,0,4,10">
+                            Margin="{StaticResource CoaxarCardTextMargin}">
                             <Label.Shadow>
                                 <Shadow
                                     Brush="Black"
@@ -119,7 +119,7 @@
         </CollectionView.ItemTemplate>
 
         <CollectionView.Footer>
-            <BoxView HeightRequest="40" Color="Transparent" />
+            <BoxView HeightRequest="{StaticResource CoaxarDetailSeparatorHeight}" Color="Transparent" />
         </CollectionView.Footer>
 
     </CollectionView>

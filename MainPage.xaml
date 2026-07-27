@@ -9,38 +9,38 @@
 
     <ScrollView>
         <Grid
-            Padding="28,42,28,24"
+            Padding="{StaticResource CoaxarScreenPadding}"
             RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,*">
 
             <!-- Topo: menu + logos -->
             <Grid
                 Grid.Row="0"
                 ColumnDefinitions="Auto,*,Auto"
-                Margin="0,0,0,18">
+                Margin="0,0,0,15">
 
                 <Border
-                    WidthRequest="46"
-                    HeightRequest="46"
+                    WidthRequest="{StaticResource CoaxarMenuSize}"
+                    HeightRequest="{StaticResource CoaxarMenuSize}"
                     Stroke="White"
-                    StrokeThickness="3"
+                    StrokeThickness="2.5"
                     BackgroundColor="Transparent"
-                    StrokeShape="RoundRectangle 23">
+                    StrokeShape="RoundRectangle 19">
                     <VerticalStackLayout
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
-                        Spacing="5">
-                        <BoxView WidthRequest="28" HeightRequest="4" CornerRadius="2" Color="White" />
-                        <BoxView WidthRequest="28" HeightRequest="4" CornerRadius="2" Color="White" />
-                        <BoxView WidthRequest="28" HeightRequest="4" CornerRadius="2" Color="White" />
+                        Spacing="{StaticResource CoaxarMenuLineSpacing}">
+                        <BoxView WidthRequest="{StaticResource CoaxarMenuLineWidth}" HeightRequest="{StaticResource CoaxarMenuLineHeight}" CornerRadius="2" Color="White" />
+                        <BoxView WidthRequest="{StaticResource CoaxarMenuLineWidth}" HeightRequest="{StaticResource CoaxarMenuLineHeight}" CornerRadius="2" Color="White" />
+                        <BoxView WidthRequest="{StaticResource CoaxarMenuLineWidth}" HeightRequest="{StaticResource CoaxarMenuLineHeight}" CornerRadius="2" Color="White" />
                     </VerticalStackLayout>
                 </Border>
 
                 <HorizontalStackLayout
                     Grid.Column="2"
-                    Spacing="14"
+                    Spacing="{StaticResource CoaxarTopSpacing}"
                     VerticalOptions="Start">
-                    <Image Source="logo_ufrpe.png" WidthRequest="40" HeightRequest="48" Aspect="AspectFit" />
-                    <Image Source="logo_lehp.png" WidthRequest="70" HeightRequest="48" Aspect="AspectFit" />
+                    <Image Source="logo_ufrpe.png" WidthRequest="{StaticResource CoaxarTopLogoUfrpeWidth}" HeightRequest="{StaticResource CoaxarTopLogoHeight}" Aspect="AspectFit" />
+                    <Image Source="logo_lehp.png" WidthRequest="{StaticResource CoaxarTopLogoLehpWidth}" HeightRequest="{StaticResource CoaxarTopLogoHeight}" Aspect="AspectFit" />
                 </HorizontalStackLayout>
             </Grid>
 
@@ -48,56 +48,56 @@
             <Image
                 Grid.Row="1"
                 Source="logo_coaxar.png"
-                WidthRequest="150"
-                HeightRequest="150"
+                WidthRequest="{StaticResource CoaxarMainLogoSize}"
+                HeightRequest="{StaticResource CoaxarMainLogoSize}"
                 HorizontalOptions="Center"
-                Margin="0,0,0,30"
+                Margin="{StaticResource CoaxarHomeLogoMargin}"
                 Aspect="AspectFit" />
 
             <!-- Banner com navegação para famílias -->
             <Border
                 Grid.Row="2"
-                HeightRequest="340"
+                HeightRequest="{StaticResource CoaxarHomeBannerHeight}"
                 StrokeThickness="0"
                 BackgroundColor="Transparent"
-                StrokeShape="RoundRectangle 34"
-                Margin="0,0,0,46">
+                StrokeShape="RoundRectangle 28"
+                Margin="{StaticResource CoaxarHomeBannerMargin}">
 
                 <Grid>
                     <Image Source="banner_anfibio.png" Aspect="AspectFill" />
 
                     <BoxView
                         VerticalOptions="End"
-                        HeightRequest="130"
+                        HeightRequest="{StaticResource CoaxarHomeBannerOverlayHeight}"
                         Opacity="0.65"
                         Color="Black" />
 
                     <Label
                         Text="Boana albomarginata (Spix, 1824)"
                         TextColor="White"
-                        FontSize="15"
+                        FontSize="{StaticResource CoaxarFontBodyLarge}"
                         FontAttributes="Bold,Italic"
-                        Margin="22,24,0,0"
+                        Margin="{StaticResource CoaxarBannerSpeciesMargin}"
                         VerticalOptions="Start" />
 
                     <Label
                         Text="Conheça o canto dos Anfíbios Anuros do Estado de Pernambuco"
                         TextColor="White"
-                        FontSize="19"
+                        FontSize="{StaticResource CoaxarFontButton}"
                         FontAttributes="Bold"
-                        Margin="22,0,22,34"
+                        Margin="{StaticResource CoaxarBannerTitleMargin}"
                         VerticalOptions="End"
                         HorizontalTextAlignment="Center" />
 
                     <HorizontalStackLayout
-                        Spacing="14"
+                        Spacing="{StaticResource CoaxarTopSpacing}"
                         HorizontalOptions="Center"
                         VerticalOptions="End"
-                        Margin="0,0,0,14">
-                        <Ellipse WidthRequest="6" HeightRequest="6" Fill="White" />
-                        <Ellipse WidthRequest="6" HeightRequest="6" Fill="White" />
-                        <Ellipse WidthRequest="6" HeightRequest="6" Fill="White" />
-                        <Ellipse WidthRequest="6" HeightRequest="6" Fill="White" />
+                        Margin="{StaticResource CoaxarBannerDotsMargin}">
+                        <Ellipse WidthRequest="5" HeightRequest="5" Fill="White" />
+                        <Ellipse WidthRequest="5" HeightRequest="5" Fill="White" />
+                        <Ellipse WidthRequest="5" HeightRequest="5" Fill="White" />
+                        <Ellipse WidthRequest="5" HeightRequest="5" Fill="White" />
                     </HorizontalStackLayout>
 
                     <Grid.GestureRecognizers>
@@ -109,11 +109,11 @@
             <!-- Botão: Famílias (Propostas Psicopedagógicas) -->
             <Border
                 Grid.Row="3"
-                HeightRequest="78"
+                HeightRequest="{StaticResource CoaxarHomeButtonHeight}"
                 StrokeThickness="0"
                 BackgroundColor="White"
-                StrokeShape="RoundRectangle 28"
-                Margin="0,0,0,18">
+                StrokeShape="RoundRectangle 23"
+                Margin="{StaticResource CoaxarHomeButtonMargin}">
                 <Label
                     Text="Propostas Psicopedagógicas"
                     Style="{StaticResource CoaxarButtonText}"
@@ -127,11 +127,11 @@
             <!-- Botão: IA (Em breve) -->
             <Border
                 Grid.Row="4"
-                HeightRequest="78"
+                HeightRequest="{StaticResource CoaxarHomeButtonHeight}"
                 StrokeThickness="0"
                 BackgroundColor="White"
-                StrokeShape="RoundRectangle 28"
-                Margin="0,0,0,18">
+                StrokeShape="RoundRectangle 23"
+                Margin="{StaticResource CoaxarHomeButtonMargin}">
                 <VerticalStackLayout
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
@@ -144,7 +144,7 @@
                         Text="Em breve"
                         TextColor="#A95B5B"
                         FontFamily="RussoOne"
-                        FontSize="20"
+                        FontSize="{StaticResource CoaxarFontButton}"
                         HorizontalTextAlignment="Center" />
                 </VerticalStackLayout>
             </Border>
@@ -152,11 +152,11 @@
             <!-- Botão: Guia de Uso -->
             <Border
                 Grid.Row="5"
-                HeightRequest="78"
+                HeightRequest="{StaticResource CoaxarHomeButtonHeight}"
                 StrokeThickness="0"
                 BackgroundColor="White"
-                StrokeShape="RoundRectangle 28"
-                Margin="0,0,0,40">
+                StrokeShape="RoundRectangle 23"
+                Margin="{StaticResource CoaxarHomeButtonLastMargin}">
                 <Label
                     Text="Guia de Uso"
                     Style="{StaticResource CoaxarButtonText}"
@@ -172,7 +172,7 @@
                 Grid.Row="6"
                 Text="Sonoteca Coaxar do Laboratório de Estudos Herpetológicos e Paleoherpetológicos da Universidade Federal Rural de Pernambuco"
                 TextColor="White"
-                FontSize="11"
+                FontSize="{StaticResource CoaxarFontCaption}"
                 HorizontalTextAlignment="Center"
                 VerticalOptions="End" />
 

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Escala visual base aplicada sobre as referências: 0.82 -->
+    <x:Double x:Key="VisualScale">0.82</x:Double>
+
+    <!-- Layout geral -->
+    <Thickness x:Key="CoaxarScreenPadding">23,34,23,20</Thickness>
+    <Thickness x:Key="CoaxarHeaderPadding">23,34,23,0</Thickness>
+    <Thickness x:Key="CoaxarListMargin">23,0</Thickness>
+    <Thickness x:Key="CoaxarListHeaderPadding">0,30,0,0</Thickness>
+    <Thickness x:Key="CoaxarListTitleMargin">0,0,0,10</Thickness>
+    <Thickness x:Key="CoaxarSpeciesTitleMargin">0,0,0,7</Thickness>
+    <Thickness x:Key="CoaxarContentMargin">23,0,23,0</Thickness>
+    <Thickness x:Key="CoaxarParagraphMargin">23,0,23,26</Thickness>
+    <Thickness x:Key="CoaxarSectionMargin">23,0,23,2</Thickness>
+    <Thickness x:Key="CoaxarInstructionMargin">23,8,23,18</Thickness>
+    <Thickness x:Key="CoaxarFooterMargin">0,0,0,33</Thickness>
+
+    <!-- Topo -->
+    <x:Double x:Key="CoaxarTopSpacing">11</x:Double>
+    <x:Double x:Key="CoaxarMenuSize">38</x:Double>
+    <x:Double x:Key="CoaxarMenuLineWidth">23</x:Double>
+    <x:Double x:Key="CoaxarMenuLineHeight">3</x:Double>
+    <x:Double x:Key="CoaxarMenuLineSpacing">4</x:Double>
+    <x:Double x:Key="CoaxarTopLogoUfrpeWidth">33</x:Double>
+    <x:Double x:Key="CoaxarTopLogoLehpWidth">57</x:Double>
+    <x:Double x:Key="CoaxarTopLogoHeight">39</x:Double>
+    <x:Double x:Key="CoaxarMainLogoSize">123</x:Double>
+    <x:Double x:Key="CoaxarListLogoSize">72</x:Double>
+
+    <!-- Home -->
+    <x:Double x:Key="CoaxarHomeBannerHeight">279</x:Double>
+    <x:Double x:Key="CoaxarHomeBannerOverlayHeight">107</x:Double>
+    <x:Double x:Key="CoaxarHomeButtonHeight">64</x:Double>
+    <Thickness x:Key="CoaxarHomeLogoMargin">0,0,0,25</Thickness>
+    <Thickness x:Key="CoaxarHomeBannerMargin">0,0,0,38</Thickness>
+    <Thickness x:Key="CoaxarHomeButtonMargin">0,0,0,15</Thickness>
+    <Thickness x:Key="CoaxarHomeButtonLastMargin">0,0,0,33</Thickness>
+    <Thickness x:Key="CoaxarBannerSpeciesMargin">18,20,0,0</Thickness>
+    <Thickness x:Key="CoaxarBannerTitleMargin">18,0,18,28</Thickness>
+    <Thickness x:Key="CoaxarBannerDotsMargin">0,0,0,11</Thickness>
+
+    <!-- Busca/listas -->
+    <x:Double x:Key="CoaxarSearchHeight">44</x:Double>
+    <x:Double x:Key="CoaxarSearchIconSize">21</x:Double>
+    <x:Double x:Key="CoaxarSearchSmallIconSize">15</x:Double>
+    <x:Double x:Key="CoaxarSearchColumnSpacing">10</x:Double>
+    <x:Double x:Key="CoaxarSearchSmallColumnSpacing">5</x:Double>
+    <Thickness x:Key="CoaxarSearchMargin">0,10,0,2</Thickness>
+    <Thickness x:Key="CoaxarSearchGridPadding">15,0</Thickness>
+    <Thickness x:Key="CoaxarSearchSmallGridPadding">10,0</Thickness>
+    <x:Double x:Key="CoaxarSearchEntryMinHeight">36</x:Double>
+    <x:Double x:Key="CoaxarFamilyCardHeight">123</x:Double>
+    <x:Double x:Key="CoaxarSpeciesCardHeight">119</x:Double>
+    <x:Double x:Key="CoaxarListHorizontalSpacing">31</x:Double>
+    <x:Double x:Key="CoaxarListVerticalSpacing">20</x:Double>
+    <x:Double x:Key="CoaxarSpeciesVerticalSpacing">26</x:Double>
+    <Thickness x:Key="CoaxarCardTextMargin">3,0,3,15</Thickness>
+    <Thickness x:Key="CoaxarSpeciesGroupMargin">10,7,0,7</Thickness>
+
+    <!-- Guia -->
+    <x:Double x:Key="CoaxarTitleCardHeight">66</x:Double>
+    <x:Double x:Key="CoaxarStepBadgeSize">33</x:Double>
+    <x:Double x:Key="CoaxarGuideSearchHeight">36</x:Double>
+    <x:Double x:Key="CoaxarGuideFamilyCardHeight">82</x:Double>
+    <x:Double x:Key="CoaxarGuideSpeciesCardHeight">74</x:Double>
+    <x:Double x:Key="CoaxarGuideSelectedCardHeight">139</x:Double>
+    <Thickness x:Key="CoaxarGuideLogoMargin">0,5,0,21</Thickness>
+    <Thickness x:Key="CoaxarGuideTitleMargin">23,0,23,21</Thickness>
+    <Thickness x:Key="CoaxarGuideStepMargin">23,0,23,15</Thickness>
+    <Thickness x:Key="CoaxarGuideStepTightMargin">23,0,23,8</Thickness>
+    <Thickness x:Key="CoaxarGuideCardGridMargin">23,0,23,21</Thickness>
+    <Thickness x:Key="CoaxarGuideInsetCardMargin">67,0,23,3</Thickness>
+    <Thickness x:Key="CoaxarGuideInsetLabelMargin">67,5,23,20</Thickness>
+    <Thickness x:Key="CoaxarGuideBottomMargin">23,-20,23,28</Thickness>
+
+    <!-- Detalhe -->
+    <x:Double x:Key="CoaxarDetailHeaderHeight">271</x:Double>
+    <x:Double x:Key="CoaxarMapWidth">90</x:Double>
+    <x:Double x:Key="CoaxarMapHeight">66</x:Double>
+    <x:Double x:Key="CoaxarFrogIconSize">44</x:Double>
+    <x:Double x:Key="CoaxarDetailSeparatorHeight">46</x:Double>
+    <x:Double x:Key="CoaxarSpectrogramHeight">230</x:Double>
+    <x:Double x:Key="CoaxarPlayButtonSize">90</x:Double>
+    <x:Double x:Key="CoaxarPlayIconWidth">44</x:Double>
+    <x:Double x:Key="CoaxarPlayIconHeight">52</x:Double>
+    <x:Double x:Key="CoaxarSmallPlayButtonSize">39</x:Double>
+    <x:Double x:Key="CoaxarSmallPlayIconWidth">21</x:Double>
+    <x:Double x:Key="CoaxarSmallPlayIconHeight">25</x:Double>
+
+    <!-- Fontes -->
+    <x:Double x:Key="CoaxarFontTiny">8</x:Double>
+    <x:Double x:Key="CoaxarFontCaption">9</x:Double>
+    <x:Double x:Key="CoaxarFontSmall">10</x:Double>
+    <x:Double x:Key="CoaxarFontBody">11</x:Double>
+    <x:Double x:Key="CoaxarFontBodyLarge">12</x:Double>
+    <x:Double x:Key="CoaxarFontSection">15</x:Double>
+    <x:Double x:Key="CoaxarFontButton">16</x:Double>
+    <x:Double x:Key="CoaxarFontTitle">20</x:Double>
+    <x:Double x:Key="CoaxarFontDetailTitle">25</x:Double>
+    <x:Double x:Key="CoaxarFontDetailSubtitle">21</x:Double>
+    <x:Double x:Key="CoaxarFontDetailSection">24</x:Double>
+    <x:Double x:Key="CoaxarFontDetailSubsection">23</x:Double>
+</ResourceDictionary>

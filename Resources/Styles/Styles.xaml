@@ -201,14 +201,14 @@
     <Style TargetType="Label" x:Key="CoaxarTitle">
         <Setter Property="FontFamily" Value="RussoOne" />
         <Setter Property="TextColor" Value="White" />
-        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontSize" Value="{StaticResource CoaxarFontTitle}" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 
     <Style TargetType="Label" x:Key="CoaxarButtonText">
         <Setter Property="FontFamily" Value="RussoOne" />
         <Setter Property="TextColor" Value="Black" />
-        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontSize" Value="{StaticResource CoaxarFontButton}" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 

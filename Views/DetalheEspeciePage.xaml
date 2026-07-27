@@ -11,38 +11,38 @@
         <VerticalStackLayout Spacing="0" BackgroundColor="Transparent">
 
             <!-- Imagem principal -->
-            <Grid HeightRequest="330">
+            <Grid HeightRequest="{StaticResource CoaxarDetailHeaderHeight}">
                 <Image x:Name="HeaderImage" Aspect="AspectFill" />
 
                 <Border
                     BackgroundColor="White"
                     StrokeThickness="0"
-                    Padding="8,4"
-                    StrokeShape="RoundRectangle 4"
+                    Padding="7,3"
+                    StrokeShape="RoundRectangle 3"
                     HorizontalOptions="Start"
                     VerticalOptions="Start"
-                    Margin="12,44,0,0">
-                    <Label x:Name="FotoCreditoLabel" TextColor="#1B1B1B" FontSize="12" />
+                    Margin="10,36,0,0">
+                    <Label x:Name="FotoCreditoLabel" TextColor="#1B1B1B" FontSize="{StaticResource CoaxarFontSmall}" />
                 </Border>
             </Grid>
 
             <!-- Cabeçalho: nome + mapa -->
             <Grid
                 BackgroundColor="White"
-                Padding="22,26,22,24"
-                ColumnDefinitions="*,120"
+                Padding="18,21,18,20"
+                ColumnDefinitions="*,98"
                 RowDefinitions="Auto,Auto">
 
                 <Label
                     Grid.Row="0"
                     Grid.Column="0"
                     TextColor="#001D22"
-                    FontSize="26"
+                    FontSize="{StaticResource CoaxarFontDetailTitle}"
                     FontAttributes="Bold">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span x:Name="NomeCientificoSpan" FontAttributes="Bold,Italic" />
-                            <Span x:Name="AutorAnoSpan" FontAttributes="Bold" />
+                            <Span x:Name="NomeCientificoSpan" TextColor="#001D22" FontAttributes="Bold,Italic" />
+                            <Span x:Name="AutorAnoSpan" TextColor="#001D22" FontAttributes="Bold" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -52,15 +52,15 @@
                     Grid.Row="1"
                     Grid.Column="0"
                     TextColor="#001D22"
-                    FontSize="22"
-                    Margin="0,4,0,0" />
+                    FontSize="{StaticResource CoaxarFontDetailSubtitle}"
+                    Margin="0,3,0,0" />
 
                 <Image
                     x:Name="MapaImage"
                     Grid.RowSpan="2"
                     Grid.Column="1"
-                    WidthRequest="110"
-                    HeightRequest="80"
+                    WidthRequest="{StaticResource CoaxarMapWidth}"
+                    HeightRequest="{StaticResource CoaxarMapHeight}"
                     Aspect="AspectFit"
                     HorizontalOptions="End"
                     VerticalOptions="Center" />
@@ -69,12 +69,12 @@
             <!-- Morfologia: tamanhos + descrição -->
             <Grid
                 BackgroundColor="White"
-                ColumnDefinitions="150,2,*"
+                ColumnDefinitions="123,2,*"
                 Padding="0">
 
                 <Grid
                     Grid.Column="0"
-                    Padding="14,20"
+                    Padding="12,16"
                     RowDefinitions="Auto,Auto"
                     ColumnDefinitions="*,*">
 
@@ -82,16 +82,16 @@
                         Grid.Row="0"
                         Grid.Column="0"
                         Source="frog_male.png"
-                        WidthRequest="54"
-                        HeightRequest="54"
+                        WidthRequest="{StaticResource CoaxarFrogIconSize}"
+                        HeightRequest="{StaticResource CoaxarFrogIconSize}"
                         HorizontalOptions="Center" />
 
                     <Image
                         Grid.Row="0"
                         Grid.Column="1"
                         Source="frog_female.png"
-                        WidthRequest="54"
-                        HeightRequest="54"
+                        WidthRequest="{StaticResource CoaxarFrogIconSize}"
+                        HeightRequest="{StaticResource CoaxarFrogIconSize}"
                         HorizontalOptions="Center" />
 
                     <Label
@@ -99,67 +99,67 @@
                         Grid.Row="1"
                         Grid.Column="0"
                         TextColor="#001D22"
-                        FontSize="14"
+                        FontSize="{StaticResource CoaxarFontBody}"
                         HorizontalOptions="Center"
-                        Margin="0,8,0,0" />
+                        Margin="0,7,0,0" />
 
                     <Label
                         x:Name="TamanhoFemeaLabel"
                         Grid.Row="1"
                         Grid.Column="1"
                         TextColor="#001D22"
-                        FontSize="14"
+                        FontSize="{StaticResource CoaxarFontBody}"
                         HorizontalOptions="Center"
-                        Margin="0,8,0,0" />
+                        Margin="0,7,0,0" />
                 </Grid>
 
                 <BoxView Grid.Column="1" WidthRequest="2" Color="#004E56" />
 
                 <Label
                     Grid.Column="2"
-                    Padding="14,16,16,16"
+                    Padding="12,13,13,13"
                     TextColor="#001D22"
-                    FontSize="13"
+                    FontSize="{StaticResource CoaxarFontBody}"
                     LineHeight="1.35">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="Morfologia: " FontAttributes="Bold" />
-                            <Span x:Name="MorfologiaSpan" />
+                            <Span Text="Morfologia: " TextColor="#001D22" FontAttributes="Bold" />
+                            <Span x:Name="MorfologiaSpan" TextColor="#001D22" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
             </Grid>
 
             <!-- Separador verde -->
-            <BoxView HeightRequest="56" Color="#004E56" />
+            <BoxView HeightRequest="{StaticResource CoaxarDetailSeparatorHeight}" Color="#004E56" />
 
             <!-- Canto de anúncio -->
             <VerticalStackLayout
                 BackgroundColor="White"
-                Padding="28,26,28,28"
-                Spacing="20">
+                Padding="23,21,23,23"
+                Spacing="{StaticResource CoaxarFontButton}">
 
                 <Label
                     Text="Canto de anúncio"
                     TextColor="#001D22"
-                    FontSize="30"
+                    FontSize="{StaticResource CoaxarFontDetailSection}"
                     FontFamily="RussoOne"
                     HorizontalOptions="Center" />
 
-                <Grid ColumnDefinitions="*,130" ColumnSpacing="18">
+                <Grid ColumnDefinitions="*,107" ColumnSpacing="15">
                     <Image
                         x:Name="EspectrogramaImage"
                         Grid.Column="0"
-                        HeightRequest="280"
+                        HeightRequest="{StaticResource CoaxarSpectrogramHeight}"
                         Aspect="AspectFit" />
 
                     <Border
                         Grid.Column="1"
-                        WidthRequest="110"
-                        HeightRequest="110"
+                        WidthRequest="{StaticResource CoaxarPlayButtonSize}"
+                        HeightRequest="{StaticResource CoaxarPlayButtonSize}"
                         StrokeThickness="0"
                         BackgroundColor="#004E56"
-                        StrokeShape="RoundRectangle 55"
+                        StrokeShape="RoundRectangle 45"
                         HorizontalOptions="Center"
                         VerticalOptions="Center">
                         <Path
@@ -167,8 +167,8 @@
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
                             Data="M 0 0 L 0 58 L 48 29 Z"
-                            WidthRequest="54"
-                            HeightRequest="64" />
+                            WidthRequest="{StaticResource CoaxarPlayIconWidth}"
+                            HeightRequest="{StaticResource CoaxarPlayIconHeight}" />
                         <Border.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnPlayAnuncioTapped" />
                         </Border.GestureRecognizers>
@@ -178,7 +178,7 @@
                 <Label
                     x:Name="SclehpLabel"
                     TextColor="#001D22"
-                    FontSize="10"
+                    FontSize="{StaticResource CoaxarFontTiny}"
                     FontAttributes="Bold"
                     HorizontalOptions="End" />
 
@@ -187,40 +187,40 @@
             <!-- Canto de Soltura -->
             <Grid
                 BackgroundColor="White"
-                Padding="30,18"
+                Padding="25,15"
                 ColumnDefinitions="*,Auto"
-                Margin="0,22,0,0">
+                Margin="0,18,0,0">
 
                 <Label
                     Text="Canto de Soltura"
                     TextColor="#001D22"
-                    FontSize="28"
+                    FontSize="{StaticResource CoaxarFontDetailSubsection}"
                     FontFamily="RussoOne"
                     HorizontalOptions="Center"
                     VerticalOptions="Center" />
 
                 <Border
                     Grid.Column="1"
-                    WidthRequest="48"
-                    HeightRequest="48"
+                    WidthRequest="{StaticResource CoaxarSmallPlayButtonSize}"
+                    HeightRequest="{StaticResource CoaxarSmallPlayButtonSize}"
                     StrokeThickness="0"
                     BackgroundColor="#004E56"
-                    StrokeShape="RoundRectangle 24"
+                    StrokeShape="RoundRectangle 20"
                     VerticalOptions="Center">
                     <Path
                         Fill="White"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
                         Data="M 0 0 L 0 28 L 24 14 Z"
-                        WidthRequest="26"
-                        HeightRequest="30" />
+                        WidthRequest="{StaticResource CoaxarSmallPlayIconWidth}"
+                        HeightRequest="{StaticResource CoaxarSmallPlayIconHeight}" />
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnPlaySolturaTapped" />
                     </Border.GestureRecognizers>
                 </Border>
             </Grid>
 
-            <BoxView HeightRequest="60" Color="#004E56" />
+            <BoxView HeightRequest="{StaticResource CoaxarDetailSeparatorHeight}" Color="#004E56" />
 
         </VerticalStackLayout>
     </ScrollView>

@@ -11,11 +11,11 @@
     <Image
         x:Name="HomeImage"
         Aspect="AspectFit"
-        HeightRequest="128"
+        HeightRequest="{StaticResource CoaxarMainLogoSize}"
         HorizontalOptions="Center"
         Opacity="0"
         Source="logo_coaxar.png"
         VerticalOptions="Center"
-        WidthRequest="128" />
+        WidthRequest="{StaticResource CoaxarMainLogoSize}" />
 
 </ContentPage>
