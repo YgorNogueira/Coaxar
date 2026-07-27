@@ -6,6 +6,7 @@
 .nuspec/
 .buildtasks/
 templatesTest/
+Reference/
 
 # User-specific files
 *.rsuser
@@ -371,6 +372,9 @@ FodyWeavers.xsd
 .gradle/
 .idea/
 local.properties
+
+# Scripts de ambiente local
+run.sh
 
 # Directory Build overrides for local setups
 Directory.Build.Override.props
