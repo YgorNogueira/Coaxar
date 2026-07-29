@@ -6,11 +6,13 @@ namespace CoaxarApp.Views;
 [QueryProperty(nameof(AnimalId), "animalId")]
 public partial class DetalheEspeciePage : ContentPage
 {
+    //Animal exibido na tela
     private AnimalModel? _animal;
 
+    //Identificador do animal recebido pela navegação
     public int AnimalId
     {
-        set => _ = CarregarAnimalAsync(value);
+        set => _ = LoadAnimalAsync(value);
     }
 
     public DetalheEspeciePage()
@@ -18,7 +20,8 @@ public partial class DetalheEspeciePage : ContentPage
         InitializeComponent();
     }
 
-    private async Task CarregarAnimalAsync(int id)
+    //Busca o animal no banco e preenche os campos da tela
+    private async Task LoadAnimalAsync(int id)
     {
         _animal = await AnimalRepository.GetAnimalByIdAsync(id);
         if (_animal is null) return;
@@ -37,7 +40,10 @@ public partial class DetalheEspeciePage : ContentPage
     }
 
     // SQLite: implementar reprodução de áudio com plugin de mídia
-    void OnPlayAnuncioTapped(object sender, TappedEventArgs e) { }
 
-    void OnPlaySolturaTapped(object sender, TappedEventArgs e) { }
+    //Toca o canto de anúncio
+    void OnPlayAdvertisementCallTapped(object sender, TappedEventArgs e) { }
+
+    //Toca o canto de soltura
+    void OnPlayReleaseCallTapped(object sender, TappedEventArgs e) { }
 }

@@ -20,7 +20,7 @@
         Margin="{StaticResource CoaxarListMargin}"
         IsGrouped="True"
         SelectionMode="Single"
-        SelectionChanged="OnEspecieSelected">
+        SelectionChanged="OnSpeciesSelected">
 
         <CollectionView.Header>
             <VerticalStackLayout Padding="{StaticResource CoaxarListHeaderPadding}">
@@ -65,7 +65,7 @@
                             FontSize="{StaticResource CoaxarFontButton}"
                             MinimumHeightRequest="{StaticResource CoaxarSearchEntryMinHeight}"
                             VerticalOptions="Center"
-                            TextChanged="OnBuscaTextChanged" />
+                            TextChanged="OnSearchTextChanged" />
 
                     </Grid>
                 </Border>

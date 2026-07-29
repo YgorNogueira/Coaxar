@@ -7,6 +7,7 @@ public partial class HomePage : ContentPage
 		InitializeComponent();
 	}
 
+	//Mostra a logo com fade e navega para a tela principal
 	private async void HomeLoaded(object sender, EventArgs e)
     {
         this.Title = "Coaxar";

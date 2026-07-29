@@ -177,7 +177,7 @@
                             WidthRequest="{StaticResource CoaxarPlayIconWidth}"
                             HeightRequest="{StaticResource CoaxarPlayIconHeight}" />
                         <Border.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnPlayAnuncioTapped" />
+                            <TapGestureRecognizer Tapped="OnPlayAdvertisementCallTapped" />
                         </Border.GestureRecognizers>
                     </Border>
                 </Grid>
@@ -222,7 +222,7 @@
                         WidthRequest="{StaticResource CoaxarSmallPlayIconWidth}"
                         HeightRequest="{StaticResource CoaxarSmallPlayIconHeight}" />
                     <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnPlaySolturaTapped" />
+                        <TapGestureRecognizer Tapped="OnPlayReleaseCallTapped" />
                     </Border.GestureRecognizers>
                 </Border>
             </Grid>

@@ -8,6 +8,7 @@ namespace CoaxarApp
         {
             InitializeComponent();
 
+            //Registra as rotas de navegação do app
             Routing.RegisterRoute(nameof(FamiliasPage), typeof(FamiliasPage));
             Routing.RegisterRoute(nameof(EspeciesDaFamiliaPage), typeof(EspeciesDaFamiliaPage));
             Routing.RegisterRoute(nameof(DetalheEspeciePage), typeof(DetalheEspeciePage));

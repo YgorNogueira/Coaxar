@@ -19,7 +19,7 @@
         x:Name="FamiliasCollection"
         Margin="{StaticResource CoaxarListMargin}"
         SelectionMode="Single"
-        SelectionChanged="OnFamiliaSelected">
+        SelectionChanged="OnFamilySelected">
 
         <CollectionView.Header>
             <VerticalStackLayout Padding="{StaticResource CoaxarListHeaderPadding}">
@@ -64,7 +64,7 @@
                             FontSize="{StaticResource CoaxarFontButton}"
                             MinimumHeightRequest="{StaticResource CoaxarSearchEntryMinHeight}"
                             VerticalOptions="Center"
-                            TextChanged="OnBuscaTextChanged" />
+                            TextChanged="OnSearchTextChanged" />
 
                     </Grid>
                 </Border>

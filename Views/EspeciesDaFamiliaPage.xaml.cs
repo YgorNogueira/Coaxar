@@ -7,15 +7,18 @@ namespace CoaxarApp.Views;
 public partial class EspeciesDaFamiliaPage : ContentPage
 {
     private string _familiaNome = string.Empty;
+
+    //Versão da busca para ignorar resultados atrasados
     private int _searchVersion;
 
+    //Nome da família recebido pela navegação
     public string FamiliaNome
     {
         set
         {
             _familiaNome = Uri.UnescapeDataString(value ?? string.Empty);
             FamiliaTitulo.Text = _familiaNome;
-            _ = AtualizarEspeciesAsync();
+            _ = UpdateSpeciesAsync();
         }
     }
 
@@ -24,24 +27,27 @@ public partial class EspeciesDaFamiliaPage : ContentPage
         InitializeComponent();
     }
 
-    async void OnBuscaTextChanged(object sender, TextChangedEventArgs e) =>
-        await AtualizarEspeciesAsync(e.NewTextValue);
+    //Atualiza a lista quando o texto da busca muda
+    async void OnSearchTextChanged(object sender, TextChangedEventArgs e) =>
+        await UpdateSpeciesAsync(e.NewTextValue);
 
-    private async Task AtualizarEspeciesAsync(string? busca = null)
+    //Busca as espécies agrupadas por gênero e atualiza a tela
+    private async Task UpdateSpeciesAsync(string? search = null)
     {
         if (string.IsNullOrWhiteSpace(_familiaNome))
             return;
 
         var version = ++_searchVersion;
-        var grupos = await AnimalRepository.GetGenerosDaFamiliaAsync(
+        var grupos = await AnimalRepository.GetGeneraByFamilyAsync(
             _familiaNome,
-            busca);
+            search);
 
         if (version == _searchVersion)
             EspeciesCollection.ItemsSource = grupos;
     }
 
-    async void OnEspecieSelected(object sender, SelectionChangedEventArgs e)
+    //Abre a tela de detalhe da espécie selecionada
+    async void OnSpeciesSelected(object sender, SelectionChangedEventArgs e)
     {
         if (e.CurrentSelection.FirstOrDefault() is not AnimalModel animal)
             return;
