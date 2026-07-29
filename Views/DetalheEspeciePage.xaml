@@ -4,10 +4,17 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     BackgroundColor="#004E56"
-    BackgroundImageSource="lehp_texture.png"
     Shell.NavBarIsVisible="False">
 
-    <ScrollView>
+    <Grid>
+        <Image
+            Source="lehp_texture.png"
+            Aspect="AspectFill"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            InputTransparent="True" />
+
+        <ScrollView>
         <VerticalStackLayout Spacing="0" BackgroundColor="Transparent">
 
             <!-- Imagem principal -->
@@ -223,5 +230,6 @@
             <BoxView HeightRequest="{StaticResource CoaxarDetailSeparatorHeight}" Color="#004E56" />
 
         </VerticalStackLayout>
-    </ScrollView>
+        </ScrollView>
+    </Grid>
 </ContentPage>
