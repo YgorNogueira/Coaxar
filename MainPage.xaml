@@ -71,7 +71,7 @@
                 Margin="{StaticResource CoaxarHomeBannerMargin}">
 
                 <Grid>
-                    <Image Source="banner_anfibio.png" Aspect="AspectFill" />
+                    <Image x:Name="BannerImage" Source="banner_rhinella_dypticha.png" Aspect="AspectFill" />
 
                     <BoxView
                         VerticalOptions="End"
@@ -80,7 +80,7 @@
                         Color="Black" />
 
                     <Label
-                        Text="Boana albomarginata (Spix, 1824)"
+                        x:Name="BannerSpeciesLabel"
                         TextColor="White"
                         FontSize="{StaticResource CoaxarFontBodyLarge}"
                         FontAttributes="Bold,Italic"
@@ -101,10 +101,10 @@
                         HorizontalOptions="Center"
                         VerticalOptions="End"
                         Margin="{StaticResource CoaxarBannerDotsMargin}">
-                        <Ellipse WidthRequest="5" HeightRequest="5" Fill="White" />
-                        <Ellipse WidthRequest="5" HeightRequest="5" Fill="White" />
-                        <Ellipse WidthRequest="5" HeightRequest="5" Fill="White" />
-                        <Ellipse WidthRequest="5" HeightRequest="5" Fill="White" />
+                        <Ellipse x:Name="BannerDot1" WidthRequest="5" HeightRequest="5" Fill="White" />
+                        <Ellipse x:Name="BannerDot2" WidthRequest="5" HeightRequest="5" Fill="White" />
+                        <Ellipse x:Name="BannerDot3" WidthRequest="5" HeightRequest="5" Fill="White" />
+                        <Ellipse x:Name="BannerDot4" WidthRequest="5" HeightRequest="5" Fill="White" />
                     </HorizontalStackLayout>
 
                     <Grid.GestureRecognizers>
