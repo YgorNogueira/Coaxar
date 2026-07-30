@@ -15,10 +15,10 @@ public partial class MainPage : ContentPage
         await Shell.Current.GoToAsync(nameof(FamiliasPage));
     }
 
-    //Abre a tela de famílias
-    async void OnFamiliasTapped(object sender, TappedEventArgs e)
+    //Abre a tela de propostas psicopedagógicas
+    async void OnPropostasPsicopedagogicasTapped(object sender, TappedEventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(FamiliasPage));
+        await Shell.Current.GoToAsync(nameof(PropostasPsicopedagogicasPage));
     }
 
     //Abre a tela do guia de uso

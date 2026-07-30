@@ -113,7 +113,7 @@
                 </Grid>
             </Border>
 
-            <!-- Botão: Famílias (Propostas Psicopedagógicas) -->
+            <!-- Botão: Propostas Psicopedagógicas -->
             <Border
                 Grid.Row="3"
                 HeightRequest="{StaticResource CoaxarHomeButtonHeight}"
@@ -127,7 +127,7 @@
                     HorizontalOptions="Center"
                     VerticalOptions="Center" />
                 <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnFamiliasTapped" />
+                    <TapGestureRecognizer Tapped="OnPropostasPsicopedagogicasTapped" />
                 </Border.GestureRecognizers>
             </Border>
 

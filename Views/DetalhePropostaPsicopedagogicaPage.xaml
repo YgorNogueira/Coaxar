@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CoaxarApp.Views.DetalhePropostaPsicopedagogicaPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:CoaxarApp.Models"
+    x:DataType="models:PropostaPsicopedagogicaModel"
+    BackgroundColor="#004E56"
+    Shell.NavBarIsVisible="False">
+
+    <Grid>
+        <Image
+            Source="lehp_texture.png"
+            Aspect="AspectFill"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            InputTransparent="True" />
+
+        <ScrollView>
+            <VerticalStackLayout Spacing="0">
+                <Grid
+                    Padding="{StaticResource CoaxarHeaderPadding}"
+                    ColumnDefinitions="Auto,*,Auto">
+
+                    <Border
+                        WidthRequest="{StaticResource CoaxarMenuSize}"
+                        HeightRequest="{StaticResource CoaxarMenuSize}"
+                        Stroke="White"
+                        StrokeThickness="2.5"
+                        BackgroundColor="Transparent"
+                        StrokeShape="RoundRectangle 19">
+                        <VerticalStackLayout
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            Spacing="{StaticResource CoaxarMenuLineSpacing}">
+                            <BoxView WidthRequest="{StaticResource CoaxarMenuLineWidth}" HeightRequest="{StaticResource CoaxarMenuLineHeight}" CornerRadius="2" Color="White" />
+                            <BoxView WidthRequest="{StaticResource CoaxarMenuLineWidth}" HeightRequest="{StaticResource CoaxarMenuLineHeight}" CornerRadius="2" Color="White" />
+                            <BoxView WidthRequest="{StaticResource CoaxarMenuLineWidth}" HeightRequest="{StaticResource CoaxarMenuLineHeight}" CornerRadius="2" Color="White" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <HorizontalStackLayout
+                        Grid.Column="2"
+                        Spacing="{StaticResource CoaxarTopSpacing}"
+                        VerticalOptions="Start">
+                        <Image Source="logo_ufrpe.png" WidthRequest="{StaticResource CoaxarTopLogoUfrpeWidth}" HeightRequest="{StaticResource CoaxarTopLogoHeight}" Aspect="AspectFit" />
+                        <Image Source="logo_lehp.png" WidthRequest="{StaticResource CoaxarTopLogoLehpWidth}" HeightRequest="{StaticResource CoaxarTopLogoHeight}" Aspect="AspectFit" />
+                    </HorizontalStackLayout>
+                </Grid>
+
+                <Image
+                    Source="logo_coaxar.png"
+                    WidthRequest="{StaticResource CoaxarListLogoSize}"
+                    HeightRequest="{StaticResource CoaxarListLogoSize}"
+                    HorizontalOptions="Center"
+                    Margin="0,10,0,18"
+                    Aspect="AspectFit" />
+
+                <Border
+                    HeightRequest="{StaticResource CoaxarTitleCardHeight}"
+                    StrokeThickness="0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 23"
+                    Margin="{StaticResource CoaxarGuideTitleMargin}">
+                    <Label
+                        Text="Propostas Psicopedagógicas"
+                        Style="{StaticResource CoaxarButtonText}"
+                        FontSize="{StaticResource CoaxarFontTitle}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Border>
+
+                <Label
+                    Text="{Binding Nivel}"
+                    Style="{StaticResource CoaxarTitle}"
+                    Margin="23,0,23,16" />
+
+                <Border
+                    Padding="18,16"
+                    StrokeThickness="0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 23"
+                    Margin="23,0,23,16">
+                    <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*" RowSpacing="8" ColumnSpacing="12">
+                        <Label
+                            Text="Duração:"
+                            TextColor="#001D22"
+                            FontFamily="OpenSansSemibold"
+                            FontSize="{StaticResource CoaxarFontBodyLarge}" />
+                        <Label
+                            Grid.Column="1"
+                            Text="{Binding Duracao}"
+                            TextColor="#001D22"
+                            FontSize="{StaticResource CoaxarFontBodyLarge}" />
+
+                        <Label
+                            Grid.Row="1"
+                            Text="Área:"
+                            TextColor="#001D22"
+                            FontFamily="OpenSansSemibold"
+                            FontSize="{StaticResource CoaxarFontBodyLarge}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding Area}"
+                            TextColor="#001D22"
+                            FontSize="{StaticResource CoaxarFontBodyLarge}" />
+                    </Grid>
+                </Border>
+
+                <Border
+                    Padding="18,17"
+                    StrokeThickness="0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 23"
+                    Margin="23,0,23,16">
+                    <VerticalStackLayout Spacing="12">
+                        <Label
+                            Text="Habilidades BNCC trabalhadas"
+                            TextColor="#004E56"
+                            FontFamily="RussoOne"
+                            FontSize="{StaticResource CoaxarFontSection}" />
+
+                        <VerticalStackLayout
+                            Spacing="8"
+                            BindableLayout.ItemsSource="{Binding HabilidadesBncc}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="x:String">
+                                    <Grid ColumnDefinitions="14,*" ColumnSpacing="7">
+                                        <Label
+                                            Text="•"
+                                            TextColor="#004E56"
+                                            FontAttributes="Bold"
+                                            FontSize="{StaticResource CoaxarFontBodyLarge}" />
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="{Binding .}"
+                                            TextColor="#001D22"
+                                            FontSize="{StaticResource CoaxarFontBodyLarge}"
+                                            LineHeight="1.25" />
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border
+                    Padding="18,17"
+                    StrokeThickness="0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 23"
+                    Margin="23,0,23,16">
+                    <VerticalStackLayout Spacing="12">
+                        <Label
+                            Text="Objetivos"
+                            TextColor="#004E56"
+                            FontFamily="RussoOne"
+                            FontSize="{StaticResource CoaxarFontSection}" />
+
+                        <VerticalStackLayout
+                            Spacing="8"
+                            BindableLayout.ItemsSource="{Binding Objetivos}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="x:String">
+                                    <Grid ColumnDefinitions="14,*" ColumnSpacing="7">
+                                        <Label
+                                            Text="•"
+                                            TextColor="#004E56"
+                                            FontAttributes="Bold"
+                                            FontSize="{StaticResource CoaxarFontBodyLarge}" />
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="{Binding .}"
+                                            TextColor="#001D22"
+                                            FontSize="{StaticResource CoaxarFontBodyLarge}"
+                                            LineHeight="1.25" />
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border
+                    Padding="18,17"
+                    StrokeThickness="0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 23"
+                    Margin="23,0,23,16">
+                    <VerticalStackLayout Spacing="12">
+                        <Label
+                            Text="Recursos e Materiais"
+                            TextColor="#004E56"
+                            FontFamily="RussoOne"
+                            FontSize="{StaticResource CoaxarFontSection}" />
+
+                        <VerticalStackLayout
+                            Spacing="8"
+                            BindableLayout.ItemsSource="{Binding Recursos}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="x:String">
+                                    <Grid ColumnDefinitions="14,*" ColumnSpacing="7">
+                                        <Label
+                                            Text="•"
+                                            TextColor="#004E56"
+                                            FontAttributes="Bold"
+                                            FontSize="{StaticResource CoaxarFontBodyLarge}" />
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="{Binding .}"
+                                            TextColor="#001D22"
+                                            FontSize="{StaticResource CoaxarFontBodyLarge}"
+                                            LineHeight="1.25" />
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border
+                    Padding="18,17"
+                    StrokeThickness="0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 23"
+                    Margin="23,0,23,16">
+                    <VerticalStackLayout Spacing="14">
+                        <Label
+                            Text="Desenvolvimento"
+                            TextColor="#004E56"
+                            FontFamily="RussoOne"
+                            FontSize="{StaticResource CoaxarFontSection}" />
+
+                        <VerticalStackLayout
+                            Spacing="14"
+                            BindableLayout.ItemsSource="{Binding Etapas}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="models:PropostaEtapaModel">
+                                    <Grid ColumnDefinitions="64,*" ColumnSpacing="12">
+                                        <Border
+                                            Padding="6,5"
+                                            StrokeThickness="0"
+                                            BackgroundColor="#004E56"
+                                            StrokeShape="RoundRectangle 15"
+                                            VerticalOptions="Start">
+                                            <Label
+                                                Text="{Binding Duracao}"
+                                                TextColor="White"
+                                                FontSize="{StaticResource CoaxarFontCaption}"
+                                                HorizontalTextAlignment="Center" />
+                                        </Border>
+
+                                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                            <Label
+                                                Text="{Binding Titulo}"
+                                                TextColor="#001D22"
+                                                FontFamily="OpenSansSemibold"
+                                                FontSize="{StaticResource CoaxarFontBodyLarge}"
+                                                FontAttributes="Bold" />
+                                            <Label
+                                                Text="{Binding Descricao}"
+                                                TextColor="#001D22"
+                                                FontSize="{StaticResource CoaxarFontBody}"
+                                                LineHeight="1.3" />
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border
+                    Padding="18,17"
+                    StrokeThickness="0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 23"
+                    Margin="23,0,23,28">
+                    <VerticalStackLayout Spacing="12">
+                        <Label
+                            Text="Avaliação"
+                            TextColor="#004E56"
+                            FontFamily="RussoOne"
+                            FontSize="{StaticResource CoaxarFontSection}" />
+
+                        <VerticalStackLayout
+                            Spacing="8"
+                            BindableLayout.ItemsSource="{Binding Avaliacao}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="x:String">
+                                    <Grid ColumnDefinitions="14,*" ColumnSpacing="7">
+                                        <Label
+                                            Text="•"
+                                            TextColor="#004E56"
+                                            FontAttributes="Bold"
+                                            FontSize="{StaticResource CoaxarFontBodyLarge}" />
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="{Binding .}"
+                                            TextColor="#001D22"
+                                            FontSize="{StaticResource CoaxarFontBodyLarge}"
+                                            LineHeight="1.25" />
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+
+                <BoxView HeightRequest="{StaticResource CoaxarDetailSeparatorHeight}" Color="#004E56" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

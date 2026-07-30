@@ -13,6 +13,8 @@ namespace CoaxarApp
             Routing.RegisterRoute(nameof(EspeciesDaFamiliaPage), typeof(EspeciesDaFamiliaPage));
             Routing.RegisterRoute(nameof(DetalheEspeciePage), typeof(DetalheEspeciePage));
             Routing.RegisterRoute(nameof(GuiaDeUsoPage), typeof(GuiaDeUsoPage));
+            Routing.RegisterRoute(nameof(PropostasPsicopedagogicasPage), typeof(PropostasPsicopedagogicasPage));
+            Routing.RegisterRoute(nameof(DetalhePropostaPsicopedagogicaPage), typeof(DetalhePropostaPsicopedagogicaPage));
         }
     }
 }
