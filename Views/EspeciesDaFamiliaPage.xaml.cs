@@ -27,6 +27,13 @@ public partial class EspeciesDaFamiliaPage : ContentPage
         InitializeComponent();
     }
 
+    //Anima a entrada da tela
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _ = this.AnimateEntranceAsync();
+    }
+
     //Atualiza a lista quando o texto da busca muda
     async void OnSearchTextChanged(object sender, TextChangedEventArgs e) =>
         await UpdateSpeciesAsync(e.NewTextValue);
@@ -46,13 +53,13 @@ public partial class EspeciesDaFamiliaPage : ContentPage
             EspeciesCollection.ItemsSource = grupos;
     }
 
-    //Abre a tela de detalhe da espécie selecionada
-    async void OnSpeciesSelected(object sender, SelectionChangedEventArgs e)
+    //Abre a tela de detalhe da espécie tocada, com efeito de aperto
+    async void OnSpeciesTapped(object sender, TappedEventArgs e)
     {
-        if (e.CurrentSelection.FirstOrDefault() is not AnimalModel animal)
+        if (sender is not View card || card.BindingContext is not AnimalModel animal)
             return;
 
-        ((CollectionView)sender).SelectedItem = null;
+        await card.AnimatePressAsync();
         await Shell.Current.GoToAsync($"{nameof(DetalheEspeciePage)}?animalId={animal.Id}");
     }
 }

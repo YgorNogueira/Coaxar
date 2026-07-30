@@ -17,9 +17,7 @@
 
         <CollectionView
             x:Name="PropostasCollection"
-            Margin="{StaticResource CoaxarListMargin}"
-            SelectionMode="Single"
-            SelectionChanged="OnProposalSelected">
+            Margin="{StaticResource CoaxarListMargin}">
 
             <CollectionView.Header>
                 <VerticalStackLayout Padding="{StaticResource CoaxarListHeaderPadding}" Spacing="0">
@@ -66,6 +64,10 @@
                         StrokeThickness="0"
                         BackgroundColor="White"
                         StrokeShape="RoundRectangle 23">
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnProposalTapped" />
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout Spacing="11">
                             <Label
                                 Text="{Binding Nivel}"

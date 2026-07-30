@@ -17,9 +17,7 @@
 
         <CollectionView
         x:Name="FamiliasCollection"
-        Margin="{StaticResource CoaxarListMargin}"
-        SelectionMode="Single"
-        SelectionChanged="OnFamilySelected">
+        Margin="{StaticResource CoaxarListMargin}">
 
         <CollectionView.Header>
             <VerticalStackLayout Padding="{StaticResource CoaxarListHeaderPadding}">
@@ -94,6 +92,10 @@
                     HeightRequest="{StaticResource CoaxarFamilyCardHeight}"
                     StrokeThickness="0"
                     StrokeShape="RoundRectangle 23">
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnFamilyTapped" />
+                    </Border.GestureRecognizers>
 
                     <Grid>
                         <Image

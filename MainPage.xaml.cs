@@ -1,3 +1,4 @@
+using CoaxarApp.Services;
 using CoaxarApp.Views;
 using Microsoft.Maui.Controls.Shapes;
 
@@ -31,6 +32,7 @@ public partial class MainPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
+        _ = this.AnimateEntranceAsync();
         StartBannerRotation();
     }
 
@@ -86,18 +88,21 @@ public partial class MainPage : ContentPage
     //Abre a tela de famílias ao tocar no banner
     async void OnBannerTapped(object sender, TappedEventArgs e)
     {
+        await ((View)sender).AnimatePressAsync();
         await Shell.Current.GoToAsync(nameof(FamiliasPage));
     }
 
     //Abre a tela de propostas psicopedagógicas
     async void OnPropostasPsicopedagogicasTapped(object sender, TappedEventArgs e)
     {
+        await ((View)sender).AnimatePressAsync();
         await Shell.Current.GoToAsync(nameof(PropostasPsicopedagogicasPage));
     }
 
     //Abre a tela do guia de uso
     async void OnGuiaDeUsoTapped(object sender, TappedEventArgs e)
     {
+        await ((View)sender).AnimatePressAsync();
         await Shell.Current.GoToAsync(nameof(GuiaDeUsoPage));
     }
 }

@@ -18,9 +18,7 @@
         <CollectionView
         x:Name="EspeciesCollection"
         Margin="{StaticResource CoaxarListMargin}"
-        IsGrouped="True"
-        SelectionMode="Single"
-        SelectionChanged="OnSpeciesSelected">
+        IsGrouped="True">
 
         <CollectionView.Header>
             <VerticalStackLayout Padding="{StaticResource CoaxarListHeaderPadding}">
@@ -112,6 +110,10 @@
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="models:AnimalModel">
                 <VerticalStackLayout Spacing="7">
+
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSpeciesTapped" />
+                    </VerticalStackLayout.GestureRecognizers>
                     <Border
                         HeightRequest="{StaticResource CoaxarSpeciesCardHeight}"
                         StrokeThickness="0"

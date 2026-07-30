@@ -13,10 +13,11 @@ public partial class FamiliasPage : ContentPage
         InitializeComponent();
     }
 
-    //Carrega as famílias ao abrir a tela
+    //Carrega as famílias ao abrir a tela, com animação de entrada
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+        _ = this.AnimateEntranceAsync();
         await UpdateFamiliesAsync(BuscaEntry.Text);
     }
 
@@ -34,13 +35,13 @@ public partial class FamiliasPage : ContentPage
             FamiliasCollection.ItemsSource = familias;
     }
 
-    //Abre a tela de espécies da família selecionada
-    async void OnFamilySelected(object sender, SelectionChangedEventArgs e)
+    //Abre a tela de espécies da família tocada, com efeito de aperto
+    async void OnFamilyTapped(object sender, TappedEventArgs e)
     {
-        if (e.CurrentSelection.FirstOrDefault() is not FamiliaModel familia)
+        if (sender is not View card || card.BindingContext is not FamiliaModel familia)
             return;
 
-        ((CollectionView)sender).SelectedItem = null;
+        await card.AnimatePressAsync();
         await Shell.Current.GoToAsync(
             $"{nameof(EspeciesDaFamiliaPage)}?familiaNome={Uri.EscapeDataString(familia.Nome)}");
     }

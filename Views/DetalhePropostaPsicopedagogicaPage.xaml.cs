@@ -21,4 +21,11 @@ public partial class DetalhePropostaPsicopedagogicaPage : ContentPage
     {
         InitializeComponent();
     }
+
+    //Anima a entrada da tela
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _ = this.AnimateEntranceAsync();
+    }
 }

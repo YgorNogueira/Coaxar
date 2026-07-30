@@ -20,6 +20,13 @@ public partial class DetalheEspeciePage : ContentPage
         InitializeComponent();
     }
 
+    //Anima a entrada da tela
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _ = this.AnimateEntranceAsync();
+    }
+
     //Busca o animal no banco e preenche os campos da tela
     private async Task LoadAnimalAsync(int id)
     {
@@ -42,8 +49,10 @@ public partial class DetalheEspeciePage : ContentPage
     // SQLite: implementar reprodução de áudio com plugin de mídia
 
     //Toca o canto de anúncio
-    void OnPlayAdvertisementCallTapped(object sender, TappedEventArgs e) { }
+    async void OnPlayAdvertisementCallTapped(object sender, TappedEventArgs e) =>
+        await ((View)sender).AnimatePressAsync();
 
     //Toca o canto de soltura
-    void OnPlayReleaseCallTapped(object sender, TappedEventArgs e) { }
+    async void OnPlayReleaseCallTapped(object sender, TappedEventArgs e) =>
+        await ((View)sender).AnimatePressAsync();
 }

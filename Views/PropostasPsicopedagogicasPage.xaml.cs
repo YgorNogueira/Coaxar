@@ -11,12 +11,20 @@ public partial class PropostasPsicopedagogicasPage : ContentPage
         PropostasCollection.ItemsSource = PropostaPsicopedagogicaRepository.GetAll();
     }
 
-    async void OnProposalSelected(object sender, SelectionChangedEventArgs e)
+    //Anima a entrada da tela
+    protected override void OnAppearing()
     {
-        if (e.CurrentSelection.FirstOrDefault() is not PropostaPsicopedagogicaModel proposta)
+        base.OnAppearing();
+        _ = this.AnimateEntranceAsync();
+    }
+
+    //Abre a tela de detalhe da proposta tocada, com efeito de aperto
+    async void OnProposalTapped(object sender, TappedEventArgs e)
+    {
+        if (sender is not View card || card.BindingContext is not PropostaPsicopedagogicaModel proposta)
             return;
 
-        ((CollectionView)sender).SelectedItem = null;
+        await card.AnimatePressAsync();
         await Shell.Current.GoToAsync(
             $"{nameof(DetalhePropostaPsicopedagogicaPage)}?propostaId={Uri.EscapeDataString(proposta.Id)}");
     }
