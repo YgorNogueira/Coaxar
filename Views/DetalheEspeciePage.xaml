@@ -3,6 +3,7 @@
     x:Class="CoaxarApp.Views.DetalheEspeciePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:CoaxarApp.Controls"
     BackgroundColor="#004E56"
     Shell.NavBarIsVisible="False">
 
@@ -17,9 +18,13 @@
         <ScrollView>
         <VerticalStackLayout Spacing="0" BackgroundColor="Transparent">
 
-            <!-- Imagem principal -->
+            <!-- Imagem principal (toque abre o visualizador com zoom) -->
             <Grid HeightRequest="{StaticResource CoaxarDetailHeaderHeight}">
-                <Image x:Name="HeaderImage" Aspect="AspectFill" />
+                <Image x:Name="HeaderImage" Aspect="AspectFill">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnHeaderImageTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
 
                 <Border
                     BackgroundColor="White"
@@ -30,6 +35,27 @@
                     VerticalOptions="Start"
                     Margin="10,36,0,0">
                     <Label x:Name="FotoCreditoLabel" TextColor="#1B1B1B" FontSize="{StaticResource CoaxarFontSmall}" />
+                </Border>
+
+                <!-- Ícone indicando que a foto pode ser ampliada -->
+                <!-- As coordenadas têm margem de 2px para o traço não ser cortado nas bordas -->
+                <Border
+                    BackgroundColor="#66000000"
+                    StrokeThickness="0"
+                    Padding="6"
+                    StrokeShape="RoundRectangle 8"
+                    HorizontalOptions="End"
+                    VerticalOptions="End"
+                    Margin="0,0,10,10"
+                    InputTransparent="True">
+                    <Path
+                        Data="M 2,8 L 2,2 L 8,2 M 16,2 L 22,2 L 22,8 M 22,16 L 22,22 L 16,22 M 8,22 L 2,22 L 2,16"
+                        Stroke="White"
+                        StrokeThickness="2"
+                        StrokeLineCap="Round"
+                        Fill="Transparent"
+                        WidthRequest="24"
+                        HeightRequest="24" />
                 </Border>
             </Grid>
 
@@ -231,5 +257,43 @@
 
         </VerticalStackLayout>
         </ScrollView>
+
+        <!-- Visualizador de imagem com zoom (pinça, arrastar e duplo toque) -->
+        <Grid
+            x:Name="ImageViewerOverlay"
+            IsVisible="False"
+            BackgroundColor="#F2001318">
+
+            <controls:PinchZoomContainer x:Name="ZoomContainer">
+                <Image
+                    x:Name="ZoomImage"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill" />
+            </controls:PinchZoomContainer>
+
+            <!-- Botão de fechar -->
+            <!-- As coordenadas têm margem de 2px para o traço não ser cortado nas bordas -->
+            <Border
+                BackgroundColor="#66FFFFFF"
+                StrokeThickness="0"
+                Padding="10"
+                StrokeShape="RoundRectangle 21"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                Margin="0,42,16,0">
+                <Path
+                    Data="M 2,2 L 16,16 M 16,2 L 2,16"
+                    Stroke="White"
+                    StrokeThickness="2.5"
+                    StrokeLineCap="Round"
+                    Fill="Transparent"
+                    WidthRequest="18"
+                    HeightRequest="18" />
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCloseImageViewerTapped" />
+                </Border.GestureRecognizers>
+            </Border>
+        </Grid>
     </Grid>
 </ContentPage>

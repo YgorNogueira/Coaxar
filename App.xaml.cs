@@ -7,7 +7,10 @@ namespace CoaxarApp
         public App()
         {
             InitializeComponent();
-            Task.Run(AnimalRepository.InitializeAsync).GetAwaiter().GetResult();
+
+            //Aquece o banco em segundo plano, sem travar a abertura do app
+            //(qualquer consulta garante a inicialização pelo GetDatabaseAsync)
+            _ = AnimalRepository.InitializeAsync();
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

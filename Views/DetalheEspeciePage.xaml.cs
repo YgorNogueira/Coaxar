@@ -55,4 +55,41 @@ public partial class DetalheEspeciePage : ContentPage
     //Toca o canto de soltura
     async void OnPlayReleaseCallTapped(object sender, TappedEventArgs e) =>
         await ((View)sender).AnimatePressAsync();
+
+    //Abre o visualizador com a foto da espécie em tela cheia
+    async void OnHeaderImageTapped(object sender, TappedEventArgs e)
+    {
+        if (_animal is null)
+            return;
+
+        ZoomImage.Source = _animal.ImagemDetalhePath ?? _animal.ImagemPath;
+        ZoomContainer.Reset();
+
+        ImageViewerOverlay.Opacity = 0;
+        ImageViewerOverlay.IsVisible = true;
+        await ImageViewerOverlay.FadeTo(1, 200, Easing.CubicOut);
+    }
+
+    //Fecha o visualizador de imagem
+    async void OnCloseImageViewerTapped(object sender, TappedEventArgs e) =>
+        await CloseImageViewerAsync();
+
+    private async Task CloseImageViewerAsync()
+    {
+        await ImageViewerOverlay.FadeTo(0, 150, Easing.CubicIn);
+        ImageViewerOverlay.IsVisible = false;
+        ZoomContainer.Reset();
+    }
+
+    //Botão voltar do Android fecha o visualizador antes de sair da tela
+    protected override bool OnBackButtonPressed()
+    {
+        if (ImageViewerOverlay.IsVisible)
+        {
+            Dispatcher.Dispatch(async () => await CloseImageViewerAsync());
+            return true;
+        }
+
+        return base.OnBackButtonPressed();
+    }
 }
